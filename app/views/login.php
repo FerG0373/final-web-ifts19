@@ -6,8 +6,7 @@
     <div>
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password" placeholder="Contraseña" required>
-        <!-- <span class="icono-alternable" onclick="alternarVisibilidad()">🙈</span> -->
-         <span class="material-symbols-outlined" onclick="alternarVisibilidad()">visibility_off</span>
+        <span class="material-symbols-outlined" onclick="alternarVisibilidad()">visibility_off</span>
     </div>
     <button type="submit" name="login">Iniciar Sesión</button>
 </form>
