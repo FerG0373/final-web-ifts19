@@ -12,6 +12,7 @@ function main() {
 
     // Acá va a ir mi layout, por ahora arrancamos con $vista_login.
     require_once $vista_login . '.php';
+    // require_once __DIR__ . '/../app/views/' . $vista_login;
 }
 
 main();
