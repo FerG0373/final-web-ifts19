@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2025 a las 14:09:20
+-- Tiempo de generación: 18-07-2025 a las 19:55:32
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,30 +39,11 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`id`, `descripcion`, `ruta_destino`, `orden`) VALUES
-(1, 'Giphy', 'scr_giphy.php', 1),
-(2, 'Landing Page', 'scr_landing_page.php', 2),
-(3, 'ABM Menues', 'scr_abm_menues.php', 3),
-(4, 'Inicio', 'index.php', 4),
-(5, 'Cerrar Sesión', 'logout.php', 5);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `pass` varchar(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nombre`, `pass`) VALUES
-(1, 'admin', '1234');
+(1, 'Giphy', '/giphy', 1),
+(2, 'Landing Page', '/landing_page', 2),
+(3, 'ABM Menues', '/abm_menu', 3),
+(4, 'Inicio', '/home', 4),
+(5, 'Cerrar Sesión', '/logout', 5);
 
 --
 -- Índices para tablas volcadas
@@ -76,13 +57,6 @@ ALTER TABLE `menu`
   ADD UNIQUE KEY `UQ_menu_descripcion` (`descripcion`);
 
 --
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UQ_usuario_nombre` (`nombre`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -91,12 +65,6 @@ ALTER TABLE `usuario`
 --
 ALTER TABLE `menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

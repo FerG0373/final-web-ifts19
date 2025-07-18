@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/config/dbConnection.php';
+require_once __DIR__ . '/../app/config/dbConnection.php';
 
 function main() {
     // Para iniciar la sesión PHP.
