@@ -1,5 +1,4 @@
-<h2>Iniciar Sesión</h2>
-
+<h2>Iniciar Sesión</h2>    
 <form action="" method="POST"> 
     <div>
         <label for="username">Usuario:</label>
