@@ -13,10 +13,10 @@
     </header>
     <main>
         <?php
-        // Obtiene la página solicitada de la URL, por defecto 'login'
+        // Obtiene la página solicitada de la URL, por defecto 'login'.
         $vista_solicitada = $_GET['page'] ?? '/login';
 
-        // Aquí iría tu lógica de sesión para verificar si el usuario está logueado
+        // Aquí iría la lógica de sesión para verificar si el usuario está logueado.
         // Por ahora, solo para ilustrar la navegación:
         switch ($vista_solicitada) {
         case '/':
