@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/dbConnection.php';
+
 function obtieneMenuTitulos($conexion): array {    
     $consultaSql = "SELECT id, descripcion, ruta_destino FROM menu ORDER BY orden ASC";
     $resultado = mysqli_query($conexion, $consultaSql);

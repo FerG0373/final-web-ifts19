@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../app/config/dbConnection.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +12,9 @@
 </head>
 <body>
     <header>
-
+        <?php
+        require_once __DIR__ . '/../app/views/_partials/_header.php';
+        ?>
     </header>
     <main>
         <?php

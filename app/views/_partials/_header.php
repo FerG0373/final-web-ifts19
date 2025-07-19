@@ -1,7 +1,7 @@
 <?php
-require_once __DIR__ . '/../../config/consultasSql.php';
+require_once __DIR__ . '/../../config/dbQueries.php';
 
-$menuTitulos = obtieneMenuTitulos();
+$menuTitulos = obtieneMenuTitulos($conexion);
 ?>
 
 <nav>
