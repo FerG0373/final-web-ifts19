@@ -1,15 +1,12 @@
 <?php
-require_once __DIR__ . '/dbConnection.php';
-
-function obtieneMenuTitulos() {
-    $conexion = obtieneConexionDB();
+function obtieneMenuTitulos($conexion): array {    
     $consultaSql = "SELECT id, descripcion, ruta_destino FROM menu ORDER BY orden ASC";
     $resultado = mysqli_query($conexion, $consultaSql);
     
     $menuTitulos = [];
     
     if (!$resultado) {
-        echo "No se pudo obtener la conexión a la base de datos para obtener los menús.";
+        error_log("Error en la consulta de menús: " . mysqli_error($conexion));
         return [];
     }
 
@@ -18,7 +15,8 @@ function obtieneMenuTitulos() {
         $menuTitulos[] = $fila;
     }
 
-    mysqli_close($conexion);
+    mysqli_free_result($resultado); //Para liberar memoria.
+    
     return $menuTitulos;
 }
 ?>

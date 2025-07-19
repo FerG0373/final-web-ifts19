@@ -19,8 +19,8 @@ function obtieneConexionDB() {
             throw new Exception("Error de conexión a la base de datos: " . mysqli_connect_error());
         }
 
-        echo('✅ Conexión OK');
-        return $conexion;
+        // echo('✅ Conexión OK');
+        // return $conexion;
     
     // Captura cualquier excepción lanzada en el try.
     } catch (Exception $ex) {        

@@ -10,7 +10,7 @@
 <body>
     <header>
         <?php
-        require_once __DIR__ . '/partials/_header.php';
+        require_once __DIR__ . '/_partials/_header.php';
         ?>
     </header>
 
