@@ -1,11 +1,12 @@
+<!-- Accede a la base de datos mySql(mariadb). -->
 <?php
-define('SERVER', 'localhost');
-define('USER', 'root');
-define('PASS', '');
-define('DATABASE', 'tp_final_giphy');
+    define('SERVER', 'localhost');
+    define('USER', 'root');
+    define('PASS', '');
+    define('DATABASE', 'tp_final_giphy');
 
-function getDbConnection() {
-    $conexion = null;    
+function obtieneConexionDB() {
+    $conexion = null;
     
     try {
         // Intenta conectar a la base de datos.
@@ -29,24 +30,3 @@ function getDbConnection() {
     }
 }
 ?>
-
-<!-- // Para probar la conexión (esto no lo dejarías en producción así, solo para verificar)
-
-// $db_conexion_procedural = getDbConnection();
-
-// if ($db_conexion_procedural) {
-//     Si la conexión es exitosa, puedes usar $db_conexion_procedural para tus consultas.
-//     Ejemplo de consulta:
-//     $resultado = mysqli_query($db_conexion_procedural, "SELECT * FROM tu_tabla LIMIT 1");
-//     if ($resultado) {
-//         $fila = mysqli_fetch_assoc($resultado);
-//         print_r($fila);
-//     }
-    
-//     No olvides cerrar la conexión cuando hayas terminado (al final del script o de tu lógica de DB)
-//     mysqli_close($db_conexion_procedural);
-// } else {
-//     La función ya maneja el die(), pero si la modificaras para retornar null,
-//     aquí podrías manejar el error.
-//     echo "La aplicación no pudo establecer conexión con la base de datos.";
-// } -->
