@@ -1,6 +1,3 @@
-<?php
-require_once __DIR__ . '/../app/config/dbConnection.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,27 +10,18 @@ require_once __DIR__ . '/../app/config/dbConnection.php';
 <body>
     <header>
         <?php
-        require_once __DIR__ . '/../app/views/_partials/_header.php';
+        require_once __DIR__ . '/../app/config/dbConnection.php';
+
+        $vista_solicitada = $_GET['page'] ?? '/login';
+        
+        if ($vista_solicitada !== '/') {
+            require_once __DIR__ . '/../app/views/_partials/_header.php';
+        }
         ?>
     </header>
     <main>
         <?php
-        // Obtiene la página solicitada de la URL, por defecto 'login'.
-        $vista_solicitada = $_GET['page'] ?? '/login';
-
-        // Aquí iría la lógica de sesión para verificar si el usuario está logueado.
-        // Por ahora, solo para ilustrar la navegación:
-        switch ($vista_solicitada) {
-        case '/':
-            require_once __DIR__ . '/../app/views/1.00-home.php';
-            break;
-        case '/login':
-            require_once __DIR__ . '/../app/views/1.01-login.php';
-            break;
-        default:
-            require_once __DIR__ . '/../app/views/9.00-notfound.php';
-            break;
-        }
+        require_once __DIR__ . '/../app/route.php';
         ?>
     </main>
     <footer>
