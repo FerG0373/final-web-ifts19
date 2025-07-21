@@ -10,11 +10,13 @@
 <body>
     <header>
         <?php
+        // Asegura que la variable $conexion esté disponible globalmente para todo el script.
         require_once __DIR__ . '/../app/config/dbConnection.php';
-
+        // Obtiene la página solicitada de la URL, por defecto 'login'.
         $vista_solicitada = $_GET['page'] ?? '/login';
-        
-        if ($vista_solicitada !== '/') {
+
+        // Si la vista solicitada es 'login', no incluimos el header.
+        if ($vista_solicitada !== '/login') {
             require_once __DIR__ . '/../app/views/_partials/_header.php';
         }
         ?>
@@ -25,7 +27,12 @@
         ?>
     </main>
     <footer>
-
+        <?php        
+        // Cerrar la conexión al final del script.
+        if (isset($conexion) && $conexion) {
+            mysqli_close($conexion);
+        }
+        ?>
     </footer>
 
     <script src="assets/js/script.js"></script>

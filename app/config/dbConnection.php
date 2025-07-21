@@ -1,5 +1,4 @@
 <!-- Accede a la base de datos mySql(mariadb). -->
-
 <?php
 $host = 'localhost';
 $user = 'root';

@@ -6,22 +6,27 @@ $menuTitulos = obtieneMenuTitulos($conexion);
 
 <nav>
     <ul>
-        <?php foreach ($menuTitulos as $item): ?>
+        <?php foreach ($menuTitulos as $titulo): ?>
             <li>
-                <a href="<?php echo $item['ruta_destino']; ?>">
-                    <?php echo $item['descripcion']; ?>
+                <a href="index.php?page=<?php echo htmlspecialchars($titulo['ruta_destino']); ?>">
+                    <?php echo htmlspecialchars($titulo['descripcion']); ?>
                 </a>
             </li>
         <?php endforeach; ?>
-
-        <!-- <?php
-        // Opcional: Agregar el enlace de LogOut si la sesión está iniciada
-        // Verifica si 'usuario_logueado' existe en $_SESSION
-        if (isset($_SESSION['usuario_logueado']) && $_SESSION['usuario_logueado'] !== null) {
-            ?>
-            <li><a href="/logout">LogOut</a></li>
-            <?php
-        }
-        ?> -->
     </ul>
 </nav>
+
+
+<!-- <nav>
+    <ul>
+        <?php foreach ($menuTitulos as $titulo): ?>
+            <li>
+                <a href="<?php echo htmlspecialchars($titulo['ruta_destino']); ?>">
+                    <?php echo htmlspecialchars($titulo['descripcion']); ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</nav> -->
+
+<!-- htmlspecialchars() es una función de PHP que sirve para convertir caracteres especiales en entidades HTML. Es para seguridad.-->

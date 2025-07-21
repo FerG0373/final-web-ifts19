@@ -1,5 +1,5 @@
 function alternarVisibilidad() {
-    const campoPassword = document.getElementById('password');
+    const campoPassword = document.getElementById('pass');
     const iconoAlternable = document.querySelector('.material-symbols-outlined');
 
     if (campoPassword.type === 'password') {
