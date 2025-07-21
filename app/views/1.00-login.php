@@ -9,5 +9,6 @@
         <input type="password" id="pass" name="pass" placeholder="Contraseña" required>
         <span class="material-symbols-outlined" onclick="alternarVisibilidad()">visibility_off</span>
     </div>
+    <?php include('/../controllers/loginController.php'); ?>
     <button type="submit" name="login">Iniciar Sesión</button>
 </form>

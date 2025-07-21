@@ -10,7 +10,7 @@ $conexion = mysqli_connect($host, $user, $pass, $db);
 if (!$conexion) {
     http_response_code(500);
     die("Error de conexión a la DB: " . mysqli_connect_error());    
-} else {    
-    echo('✅ Conexión OK'); 
+} else {
+    //echo('✅ Conexión OK');
 }
 ?>

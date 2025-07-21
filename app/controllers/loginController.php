@@ -1,7 +1,18 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+header("Expires: Sat, 26 Jul 1997 05:00:00 GMT");
+
 // Se verifica si la sesión ya está iniciada para evitar errores si se llama de nuevo.
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
+}
+
+// Si el usuario ya está logueado, redirige al home.
+if (isset($_SESSION['logueado']) && $_SESSION['logueado'] === true) {
+    header('Location: index.php?page=/home'); // Redirige a la URL de home
+    exit();
 }
 
 // Incluir dbQueries.php para tener acceso a la función obtieneUsuario().
@@ -34,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: index.php?page=/home');
             exit();
         } else {
+            echo '<div>Nombre de usuario o contraseña incorrectos</div>';
             $mensaje_error = 'Nombre de usuario o contraseña incorrectos.';
         }
     }
@@ -45,6 +57,7 @@ if ($mensaje_error) {
 }
 
 // Redirigir al usuario a la página de login si no se ha logueado correctamente.
-header('Location: index.php?page=/login');
-exit();
+// header('Location: index.php?page=/login');
+// exit();
+require_once __DIR__ . '/../views/1.00-login.php';
 ?>

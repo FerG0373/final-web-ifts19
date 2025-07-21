@@ -1,3 +1,26 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Asegura que la variable $conexion esté disponible globalmente para todo el script.
+require_once __DIR__ . '/../app/config/dbConnection.php';
+
+// Obtiene la página solicitada de la URL, por defecto 'login'.
+$vista_solicitada = $_GET['page'] ?? '/login';
+
+// Si la URL es la raíz, redirigir a /home si está logueado, o a /login si no.
+if (empty($_GET['page']) || $_GET['page'] === '/') {
+    if (isset($_SESSION['logueado']) && $_SESSION['logueado'] === true) {
+        header('Location: index.php?page=/home');
+        exit();
+    } else {
+        header('Location: index.php?page=/login');
+        exit();
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +33,6 @@
 <body>
     <header>
         <?php
-        // Asegura que la variable $conexion esté disponible globalmente para todo el script.
-        require_once __DIR__ . '/../app/config/dbConnection.php';
-        // Obtiene la página solicitada de la URL, por defecto 'login'.
-        $vista_solicitada = $_GET['page'] ?? '/login';
-
         // Si la vista solicitada es 'login', no incluimos el header.
         if ($vista_solicitada !== '/login') {
             require_once __DIR__ . '/../app/views/_partials/_header.php';
