@@ -3,10 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Asegura que la variable $conexion esté disponible globalmente para todo el script.
-require_once __DIR__ . '/../app/config/dbConnection.php';
-
-// Obtiene la página solicitada de la URL, por defecto 'login'.
+// Obtiene la página solicitada. Los parámetros de consulta después del ? de la URL.
 $vista_solicitada = $_GET['page'] ?? '';
 
 // Si la URL es la raíz, redirigir a /home si está logueado, o a /login si no lo está.
@@ -20,7 +17,7 @@ if (empty($vista_solicitada)) {
     }
 }
 
-// Protección contra acceso directo a login con sesión activa.
+// Si estoy logueado y quiero ingresar al formulario de login, me redirige a home.
 if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION['logueado'] === true) {
     header('Location: index.php?page=/home');
     exit();
@@ -47,16 +44,11 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
     </header>
     <main>
         <?php
-        require_once __DIR__ . '/../app/route.php';
+        require __DIR__ . '/../app/route.php';
         ?>
     </main>
     <footer>
-        <?php        
-        // Cerrar la conexión al final del script.
-        if (isset($conexion) && $conexion) {
-            mysqli_close($conexion);
-        }
-        ?>
+        
     </footer>
 
     <script src="assets/js/script.js"></script>

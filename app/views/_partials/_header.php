@@ -1,7 +1,10 @@
 <?php
+require_once __DIR__ . '/../../config/dbConnection.php';
 require_once __DIR__ . '/../../config/dbQueries.php';
 
 $menuTitulos = obtieneMenuTitulos($conexion);
+
+if (isset($conexion)) mysqli_close($conexion);
 ?>
 
 <nav>

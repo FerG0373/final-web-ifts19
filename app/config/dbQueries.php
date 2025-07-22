@@ -57,5 +57,4 @@ function obtieneUsuario(mysqli $conexion, string $usuario): ?array {
     
     return $usuario;
 }
-
 ?>

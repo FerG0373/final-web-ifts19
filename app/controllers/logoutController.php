@@ -1,7 +1,8 @@
 <?php
 // 1. Iniciar sesión.
-session_start();
-
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 // 2. Limpiar datos de sesión
 $_SESSION = [];
 

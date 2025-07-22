@@ -1,21 +1,18 @@
 <?php
-header("Cache-Control: no-cache, no-store, must-revalidate");
-header("Pragma: no-cache");
-header("Expires: 0");
-
-// Se verifica si la sesión ya está iniciada para evitar errores si se llama de nuevo.
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Si el usuario ya está logueado, redirige al home.
+// Conexión a base de datos.
+require_once __DIR__ . '/../config/dbConnection.php';
+// Incluir dbQueries.php para tener acceso a la función obtieneUsuario().
+require_once __DIR__ . '/../config/dbQueries.php';
+
+// Si el usuario ya está logueado, redirige a home.
 if (isset($_SESSION['logueado']) && $_SESSION['logueado'] === true) {
     header('Location: index.php?page=/home'); // Redirige a la URL de home
     exit();
 }
-
-// Incluir dbQueries.php para tener acceso a la función obtieneUsuario().
-require_once __DIR__ . '/../config/dbQueries.php';
 
 // Procesar POST (formulario enviado).
 // El router (route.php) se encarga de dirigir la solicitud hasta acá.
@@ -32,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $usuarioDB = obtieneUsuario($conexion, $usuarioIngresado);
 
         // Verifica si el usuario existe y si la contraseña es correcta.
-        if ($usuarioIngresado && $passIngresado === $usuarioDB['pass']) {
+        if ($usuarioDB && $passIngresado === $usuarioDB['pass']) {
             // Almacenar información del usuario en la sesión.
             $_SESSION['id_usuario'] = $usuarioDB['id'];
             $_SESSION['username'] = $usuarioDB['nombre'];
@@ -42,14 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: index.php?page=/home');
             exit();
         } else {
-            $_SESSION['login_error'] = 'Credenciales incorrectas';
+            $_SESSION['login_error'] = 'Credenciales incorrectas.';
         }
     }
-    // Recargar el login si falló
+    // Recargar el login si falla.
     header('Location: index.php?page=/login');
     exit();
 }
 
 // Mostrar formulario (solo si NO es POST y no está logueado).
 require_once __DIR__ . '/../views/1.00-login.php';
+
+if (isset($conexion)) mysqli_close($conexion);
 ?>
