@@ -7,10 +7,10 @@ if (session_status() == PHP_SESSION_NONE) {
 require_once __DIR__ . '/../app/config/dbConnection.php';
 
 // Obtiene la página solicitada de la URL, por defecto 'login'.
-$vista_solicitada = $_GET['page'] ?? '/login';
+$vista_solicitada = $_GET['page'] ?? '';
 
-// Si la URL es la raíz, redirigir a /home si está logueado, o a /login si no.
-if (empty($_GET['page']) || $_GET['page'] === '/') {
+// Si la URL es la raíz, redirigir a /home si está logueado, o a /login si no lo está.
+if (empty($vista_solicitada)) {
     if (isset($_SESSION['logueado']) && $_SESSION['logueado'] === true) {
         header('Location: index.php?page=/home');
         exit();
@@ -18,6 +18,12 @@ if (empty($_GET['page']) || $_GET['page'] === '/') {
         header('Location: index.php?page=/login');
         exit();
     }
+}
+
+// Protección contra acceso directo a login con sesión activa.
+if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION['logueado'] === true) {
+    header('Location: index.php?page=/home');
+    exit();
 }
 ?>
 
