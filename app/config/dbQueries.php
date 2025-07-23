@@ -20,7 +20,7 @@ function obtieneMenuTitulos($conexion): array {
     return $menuTitulos;
 }
 
-function obtieneUsuario(mysqli $conexion, string $usuario): ?array {
+function obtieneUsuario($conexion, string $usuario): ?array {
     // 1. Consulta SQL con un marcador de posición (?) para el valor dinámico.
     $sentenciaSql = "SELECT id, nombre, pass FROM usuario WHERE nombre = ?";
 
@@ -56,5 +56,9 @@ function obtieneUsuario(mysqli $conexion, string $usuario): ?array {
     mysqli_stmt_close($stmt); // Cierra la sentencia preparada.
     
     return $usuario;
+}
+
+function insertaTituloMenu($conexion) {
+
 }
 ?>

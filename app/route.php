@@ -28,6 +28,6 @@ if (!isset($rutas[$vista_solicitada])) {
     exit();
 }
 
-// Carga simple del archivo correspondiente
+// Carga la vista correspondiente.
 include $rutas[$vista_solicitada];
 ?>

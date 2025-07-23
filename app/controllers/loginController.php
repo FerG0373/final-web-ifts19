@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Validación.
     if (empty($usuarioIngresado) || empty($passIngresado)) {
-        $_SESSION['login_error'] = 'Por favor, ingresar usuario y contraseña.';
+        $_SESSION['login_error'] = '⚠️ Por favor, ingresar usuario y contraseña.';
     } else {
         // Busca usuario en DB.
         $usuarioDB = obtieneUsuario($conexion, $usuarioIngresado);
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: index.php?page=/home');
             exit();
         } else {
-            $_SESSION['login_error'] = 'Credenciales incorrectas.';
+            $_SESSION['login_error'] = '❌ Credenciales incorrectas.';
         }
     }
     // Recargar el login si falla.
