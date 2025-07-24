@@ -15,8 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: index.php?page=/abm_menu');
         exit();
     }
-    
-    //$conexion = mysqli_connect($host, $user, $pass, $db);    
+      
     $resultadoInsertDb = insertaTituloMenu($conexion, $descripcionIngresada, $rutaIngresada);    
 
     if ($resultadoInsertDb) {

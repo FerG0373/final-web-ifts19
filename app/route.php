@@ -9,6 +9,7 @@ $rutas = [
     '/giphy' => __DIR__ . '/views/2.00-giphy.php',
     '/landing_page' => __DIR__ . '/views/2.01-landing-page.php',
     '/abm_menu' => __DIR__ . '/controllers/abmMenuController.php',
+    '/form_menu' => __DIR__ . '/views/2.03-form-menu.php',
     '/logout' => __DIR__ . '/controllers/logoutController.php'
 ];
 

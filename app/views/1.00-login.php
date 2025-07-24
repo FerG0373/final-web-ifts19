@@ -1,4 +1,7 @@
+<img src="../public/assets/img/ifts19_logo.png" alt="Logo de IFTS 19" width="150">
+
 <h2>¡Bienvenido!</h2>
+
 <form action="index.php?page=/login" method="POST"> 
     <div>
         <label for="username">Usuario:</label>
