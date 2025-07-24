@@ -13,4 +13,7 @@ if (!$conexion) {
 } else {
     //echo('✅ Conexión OK');
 }
+
+// Establece el conjunto de caracteres a UTF-8 para evitar problemas con tildes y caracteres especiales.
+mysqli_set_charset($conexion, "utf8");
 ?>

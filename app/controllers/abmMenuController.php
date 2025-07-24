@@ -11,22 +11,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $rutaIngresada = trim(htmlspecialchars($_POST['path'] ?? ''));
 
     if (empty($descripcionIngresada) || empty($rutaIngresada)) {
-        $_SESSION['abm_error'] = "⚠️ Todos los campos son obligatorios";
+        $_SESSION['abm_error'] = "⚠️ Los campos son obligatorios";
         header('Location: index.php?page=/abm_menu');
         exit();
+    }
     
+    //$conexion = mysqli_connect($host, $user, $pass, $db);    
     $resultadoInsertDb = insertaTituloMenu($conexion, $descripcionIngresada, $rutaIngresada);    
 
     if ($resultadoInsertDb) {
-        $_SESSION['success_message'] = "✅ Menú insertado correctamente";
+        $_SESSION['mensaje_exito'] = "✅ Menú insertado correctamente";
     } else {
-        $_SESSION['error_message'] = "❌ Error al insertar el menú: " . mysqli_error($conexion);
+        $_SESSION['mensaje_error'] = "❌ Error al insertar el menú: " . mysqli_error($conexion);
     }
-
-    mysqli_close($conexion);
+    
     header('Location: index.php?page=/abm_menu');
     exit();
-    }
 }
 
 // Mostrar vista del formulario

@@ -54,3 +54,5 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
     <script src="assets/js/script.js"></script>
 </body>
 </html>
+
+<?php if (isset($conexion)) mysqli_close($conexion); ?>

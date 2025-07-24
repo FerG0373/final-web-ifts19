@@ -49,6 +49,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // Mostrar formulario (solo si NO es POST y no está logueado).
 require_once __DIR__ . '/../views/1.00-login.php';
-
-if (isset($conexion)) mysqli_close($conexion);
 ?>

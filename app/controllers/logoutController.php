@@ -16,7 +16,6 @@ setcookie(session_name(), '', time() - 3600, '/');
 header('Location: index.php?page=/login');
 exit();
 
-
 // session_name() obtiene el nombre de la cookie de sesión configurada en PHP.
 // '' (valor vacío) establece el contenido de la cookie como vacío.
 //time() obtiene el timestamp actual (en segundos). - 3600: Resta 1 hora (3600 segundos) para asegurar que la cookie expire inmediatamente.

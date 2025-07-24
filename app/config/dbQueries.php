@@ -1,6 +1,6 @@
 <?php
 function obtieneMenuTitulos($conexion): array {    
-    $sentenciaSql = "SELECT id, descripcion, ruta_destino FROM menu ORDER BY orden ASC";
+    $sentenciaSql = "SELECT id, descripcion, ruta_destino FROM menu ORDER BY orden IS NULL, orden ASC";
     $resultado = mysqli_query($conexion, $sentenciaSql);
     
     $menuTitulos = [];
