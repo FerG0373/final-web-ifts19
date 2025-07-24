@@ -8,7 +8,7 @@ $rutas = [
     '/home' => __DIR__ . '/views/1.01-home.php',
     '/giphy' => __DIR__ . '/views/2.00-giphy.php',
     '/landing_page' => __DIR__ . '/views/2.01-landing-page.php',
-    '/abm_menu' => __DIR__ . '/views/2.02-abm-menu.php',
+    '/abm_menu' => __DIR__ . '/controllers/abmMenuController.php',
     '/logout' => __DIR__ . '/controllers/logoutController.php'
 ];
 

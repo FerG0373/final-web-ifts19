@@ -20,45 +20,81 @@ function obtieneMenuTitulos($conexion): array {
     return $menuTitulos;
 }
 
-function obtieneUsuario($conexion, string $usuario): ?array {
-    // 1. Consulta SQL con un marcador de posición (?) para el valor dinámico.
-    $sentenciaSql = "SELECT id, nombre, pass FROM usuario WHERE nombre = ?";
-
-    // 2. Prepara la consulta.
-    $stmt = mysqli_prepare($conexion, $sentenciaSql);  // Retorna un objeto del tipo mysqli_stmt.
-    
-    if ($stmt === false) {
-        error_log("Error al obtener el resultado de la consulta: " . mysqli_error($conexion));
+function obtieneUsuario($conexion, string $usuario): ?array {    
+    // 1. Validar entrada de usuario.
+    $usuario = trim($usuario);
+    if (empty($usuario)) {
+        error_log("Error: Nombre de usuario vacío");
         return null;
     }
 
-    // 3. Vincula parámetros. Qué valor dinámico debe usar stmt para el marcador (?) "s" indica que $usuario es un string.
+    // 2. Consulta SQL con un marcador de posición (?) para el valor dinámico.
+    $sentenciaSql = "SELECT id, nombre, pass FROM usuario WHERE nombre = ?";
+
+    // 3. Prepara la consulta.
+    $stmt = mysqli_prepare($conexion, $sentenciaSql);  // Retorna un objeto del tipo mysqli_stmt.    
+    if ($stmt === false) {
+        error_log("Error al preparar la consulta: " . mysqli_error($conexion));
+        return null;
+    }
+
+    // 4. Vincula parámetros. Qué valor dinámico debe usar stmt para el marcador (?) "s" indica que $usuario es un string.
     mysqli_stmt_bind_param($stmt, "s", $usuario);
+    if (!$stmt) {
+        error_log("Error al vincular parámetros: " . mysqli_stmt_error($stmt));
+        mysqli_stmt_close($stmt);  // Cierra el statement si hubo error.
+        return null;
+    }
 
     // 4. Ejecuta la consulta preparada por mysqli_prepare().
-    mysqli_stmt_execute($stmt);
+    $execute = mysqli_stmt_execute($stmt);
+    if (!$execute) {
+        error_log("Error al ejecutar consulta: " . mysqli_stmt_error($stmt));
+        mysqli_stmt_close($stmt);
+        return null;
+    }
     
     // 5. Obtiene el resultado de la consulta.
     $resultado = mysqli_stmt_get_result($stmt);  // Retorna un objeto del tipo mysqli_result.
-
-    // Verificación de errores al obtener el resultado.
     if ($resultado === false) {
         error_log("Error al obtener el resultado: " . mysqli_error($conexion));
-        mysqli_stmt_close($stmt); // Cerrar el statement si hubo error.
+        mysqli_stmt_close($stmt); 
         return null;
     }
 
     // 6. Procesa las filas del resultado. mysqli_fetch_assoc() toma una de esas filas del conjunto de resultados y la convierte en un array asociativo.
-    $usuario = mysqli_fetch_assoc($resultado); // Obtiene la primera (y única, si el nombre es único) fila.
+    $datosUsuario = mysqli_fetch_assoc($resultado); // Obtiene la primera (y única, si el nombre es único) fila.
 
     // 7. Libera recursos.
     mysqli_free_result($resultado); // Libera la memoria del conjunto de resultados.
     mysqli_stmt_close($stmt); // Cierra la sentencia preparada.
     
-    return $usuario;
+    return $datosUsuario;
 }
 
-function insertaTituloMenu($conexion) {
+function insertaTituloMenu($conexion, $descripcion, $ruta) {
+    $sentenciaSql  = "INSERT INTO menu (descripcion, ruta_destino) VALUES (?, ?)";
+    $stmt = mysqli_prepare($conexion, $sentenciaSql);
+    
+    if ($stmt === false) {
+        error_log("Error al preparar la consulta: " . mysqli_error($conexion));
+        return false;
+    }
+    // Si no se puede vincular los parámetros..
+    if (!mysqli_stmt_bind_param($stmt, "ss", $descripcion, $ruta)) {
+        error_log("Error al bindear parámetros: " . mysqli_stmt_error($stmt));
+        mysqli_stmt_close($stmt);
+        return false;
+    }
 
+    $resultado = mysqli_stmt_execute($stmt);
+    if (!$resultado) {
+        error_log("Error al ejecutar la consulta: " . mysqli_stmt_error($stmt));
+        mysqli_stmt_close($stmt);
+        return false;
+    }
+    
+    mysqli_stmt_close($stmt);    
+    return $resultado;  // True o False.
 }
 ?>
