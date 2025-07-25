@@ -1,13 +1,16 @@
-<h1><?= isset($tituloEditar) ? 'Editar Título' : 'Agregar Nuevo Título' ?></h1>
+<h1><?= isset($tituloEditar) ? 'Editar Título' : 'Agregar Título' ?></h1>
 
 <form action="index.php?page=/abm_menu" method="POST">
+    <?php if (isset($tituloEditar)): ?>
+        <input type="hidden" name="id" value="<?= htmlspecialchars($tituloEditar['id']) ?>">
+    <?php endif; ?>
     <div>
         <label for="title">Descripción:</label>
-        <input type="text" id="title" name="title" placeholder="Ingresar nombre del título" required >
+        <input type="text" id="title" name="title" placeholder="Ingresar nombre del título" value="<?= htmlspecialchars($tituloEditar['descripcion'] ?? '') ?>" required >
     </div>
     <div>
         <label for="path">Ruta de destino:</label>
-        <input type="text" id="path" name="path" placeholder="Ingresar ruta de destino" required >
+        <input type="text" id="path" name="path" placeholder="Ingresar ruta de destino" value="<?= htmlspecialchars($tituloEditar['ruta_destino'] ?? '') ?>" required >
     </div>
 
     <!-- Mostrar mensajes de éxito/error -->
@@ -21,11 +24,13 @@
         <?php unset($_SESSION['mensaje_error']); ?>
     <?php endif; ?>
 
-    <?php if (isset($_SESSION['abm_error'])): ?>
-        <div style="color: orange;"><?= $_SESSION['abm_error'] ?></div>
-        <?php unset($_SESSION['abm_error']); ?>
+    <?php if (isset($_SESSION['mensaje_alerta'])): ?>
+        <div style="color: orange;"><?= $_SESSION['mensaje_alerta'] ?></div>
+        <?php unset($_SESSION['mensaje_alerta']); ?>
     <?php endif; ?>
 
-    <button type="submit" name="login">Insertar Título</button>
+    <button type="submit" name="submit_form">
+        <?= isset($tituloEditar) ? 'Actualizar Título' : 'Insertar Título' ?>
+    </button>
     <a href="index.php?page=/abm_menu">Cancelar</a>
 </form>

@@ -1,5 +1,5 @@
 <?php
-// Para el nav del menú.
+// Para el nav del header.
 function obtieneTitulosMenu($conexion): array {    
     $sentenciaSql = "SELECT id, descripcion, ruta_destino FROM menu ORDER BY orden IS NULL, orden ASC";
     $resultado = mysqli_query($conexion, $sentenciaSql);
