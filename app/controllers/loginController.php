@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['login_error'] = '⚠️ Por favor, ingresar usuario y contraseña.';
     } else {
         // Busca usuario en DB.
-        $usuarioDB = obtieneUsuario($conexion, $usuarioIngresado);
+        $usuarioDB = obtieneUsuarioPorNombre($conexion, $usuarioIngresado);
 
         // Verifica si el usuario existe y si la contraseña es correcta.
         if ($usuarioDB && $passIngresado === $usuarioDB['pass']) {

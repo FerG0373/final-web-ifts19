@@ -1,4 +1,5 @@
-<h1>ABM MENU</h1>
+<h1><?= isset($tituloEditar) ? 'Editar Título' : 'Agregar Nuevo Título' ?></h1>
+
 <form action="index.php?page=/abm_menu" method="POST">
     <div>
         <label for="title">Descripción:</label>
@@ -26,4 +27,5 @@
     <?php endif; ?>
 
     <button type="submit" name="login">Insertar Título</button>
+    <a href="index.php?page=/abm_menu">Cancelar</a>
 </form>

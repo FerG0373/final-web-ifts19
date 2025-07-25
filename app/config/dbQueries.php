@@ -1,9 +1,10 @@
 <?php
-function obtieneMenuTitulos($conexion): array {    
+// Para el nav del menú.
+function obtieneTitulosMenu($conexion): array {    
     $sentenciaSql = "SELECT id, descripcion, ruta_destino FROM menu ORDER BY orden IS NULL, orden ASC";
     $resultado = mysqli_query($conexion, $sentenciaSql);
     
-    $menuTitulos = [];
+    $titulosMenu = [];
     
     if (!$resultado) {
         error_log("Error en la consulta de menús: " . mysqli_error($conexion));
@@ -12,15 +13,15 @@ function obtieneMenuTitulos($conexion): array {
 
     // mysqli_fetch_assoc solo devuelve índices asociativos: $fila["nombre"].
     while ($fila = mysqli_fetch_assoc($resultado)) {
-        $menuTitulos[] = $fila;
+        $titulosMenu[] = $fila;
     }
 
     mysqli_free_result($resultado); //Para liberar memoria.
     
-    return $menuTitulos;
+    return $titulosMenu;
 }
-
-function obtieneUsuario($conexion, string $usuario): ?array {    
+// Para validar al usuario en el login.
+function obtieneUsuarioPorNombre($conexion, $usuario): ?array {    
     // 1. Validar entrada de usuario.
     $usuario = trim($usuario);
     if (empty($usuario)) {
@@ -46,7 +47,7 @@ function obtieneUsuario($conexion, string $usuario): ?array {
         return null;
     }
 
-    // 4. Ejecuta la consulta preparada por mysqli_prepare().
+    // 4. Ejecuta la consulta preparada por mysqli_prepare() y retorna true o false.
     $execute = mysqli_stmt_execute($stmt);
     if (!$execute) {
         error_log("Error al ejecutar consulta: " . mysqli_stmt_error($stmt));
@@ -71,7 +72,7 @@ function obtieneUsuario($conexion, string $usuario): ?array {
     
     return $datosUsuario;
 }
-
+// Para insertar un título en la base de datos.
 function insertaTituloMenu($conexion, $descripcion, $ruta) {
     $sentenciaSql  = "INSERT INTO menu (descripcion, ruta_destino) VALUES (?, ?)";
     $stmt = mysqli_prepare($conexion, $sentenciaSql);
@@ -96,5 +97,79 @@ function insertaTituloMenu($conexion, $descripcion, $ruta) {
     
     mysqli_stmt_close($stmt);    
     return $resultado;  // True o False.
+}
+// Para precargar el formulario de edición.
+function obtieneTituloMenuPorId($conexion, $id): ?array {
+    $sentenciaSql = "SELECT id, descripcion, ruta_destino FROM menu WHERE id = ?";
+    $stmt = mysqli_prepare($conexion, $sentenciaSql);
+
+    if ($stmt === false) {
+        error_log("Error al preparar la consulta: " . mysqli_error($conexion));
+        return null;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $id); // "i" de int.
+
+    // Ejecuta y valida la consulta.
+    if (!mysqli_stmt_execute($stmt)) {
+        error_log("Error al ejecutar la consulta: " . mysqli_stmt_error($stmt));
+        mysqli_stmt_close($stmt);
+        return null;
+    }
+    
+    $resultado = mysqli_stmt_get_result($stmt);  // Obtiene el resultado de la consulta. O sea, el objeto mysqli_result si está todo bien, sino retorna false.
+    if ($resultado === false) {
+        error_log("Error al obtener el resultado: " . mysqli_error($conexion));
+        mysqli_stmt_close($stmt);
+        return null;
+    }
+
+    $tituloMenu = mysqli_fetch_assoc($resultado);
+    mysqli_free_result($resultado);
+    mysqli_stmt_close($stmt);
+
+    return $tituloMenu;
+}
+
+// NUEVA FUNCIÓN: Actualizar un título de menú
+function modificarTituloMenu($conexion, $id, $descripcion, $ruta): bool {
+    $sentenciaSql = "UPDATE menu SET descripcion = ?, ruta_destino = ? WHERE id = ?";
+    $stmt = mysqli_prepare($conexion, $sentenciaSql);
+
+    if ($stmt === false) {
+        error_log("Error al preparar la consulta (updateTituloMenu): " . mysqli_error($conexion));
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssi", $descripcion, $ruta, $id); // "ssi" para 2 strings y 1 entero
+    $resultado = mysqli_stmt_execute($stmt);
+
+    if (!$resultado) {
+        error_log("Error al ejecutar la consulta (updateTituloMenu): " . mysqli_stmt_error($stmt));
+    }
+    
+    mysqli_stmt_close($stmt);
+    return $resultado;
+}
+
+// NUEVA FUNCIÓN: Eliminar un título de menú
+function deleteTituloMenu($conexion, $id): bool {
+    $sentenciaSql = "DELETE FROM menu WHERE id = ?";
+    $stmt = mysqli_prepare($conexion, $sentenciaSql);
+
+    if ($stmt === false) {
+        error_log("Error al preparar la consulta (deleteTituloMenu): " . mysqli_error($conexion));
+        return false;
+    }
+
+    mysqli_stmt_bind_param($stmt, "i", $id); // "i" para entero
+    $resultado = mysqli_stmt_execute($stmt);
+
+    if (!$resultado) {
+        error_log("Error al ejecutar la consulta (deleteTituloMenu): " . mysqli_stmt_error($stmt));
+    }
+
+    mysqli_stmt_close($stmt);
+    return $resultado;
 }
 ?>
