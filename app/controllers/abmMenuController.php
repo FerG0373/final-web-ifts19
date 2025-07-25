@@ -6,9 +6,9 @@ if (session_status() == PHP_SESSION_NONE) {
 require_once __DIR__ . '/../config/dbConnection.php';
 require_once __DIR__ . '/../config/dbQueries.php';
 
-$tituloEditar = null;
+$tituloEditar = null;  // Variable para almacenar los datos del título si estamos en modo edición.
 
-function precargaFormulario($conexion): ?array {
+function precargaFormulario(mysqli $conexion): ?array {
     // Verificar si la acción es 'edit' y si se proporciona un ID
     if (isset($_GET['action']) && $_GET['action'] === 'edit' && isset($_GET['id'])) {
         $idTitulo = filter_var($_GET['id'], FILTER_VALIDATE_INT); // Validar que el ID sea un entero
@@ -27,7 +27,7 @@ function precargaFormulario($conexion): ?array {
             return $tituloSeleccionado; // Retornar los datos del título.
         } else {
             // Si el ID es inválido, establecer un mensaje de error
-            $_SESSION['mensaje_alerta'] = "⚠️ ID de menú inválido para editar.";
+            $_SESSION['mensaje_alerta'] = "⚠️ ID de título inválido para editar.";
             // Redirigir a la lista principal (abm_menu)
             header('Location: index.php?page=/abm_menu');
             exit();
@@ -36,9 +36,9 @@ function precargaFormulario($conexion): ?array {
     return null; // Si no es modo edición o no hay ID, retornar null
 }
 
-function altaDeTitulo(mysqli $conexion, array $datosPost): void {
-    $descripcionIngresada = trim(htmlspecialchars($_POST['title'] ?? ''));
-    $rutaIngresada = trim(htmlspecialchars($_POST['path'] ?? ''));
+function altaTitulo(mysqli $conexion, array $datosPost): void {
+    $descripcionIngresada = trim(htmlspecialchars($datosPost['title'] ?? ''));
+    $rutaIngresada = trim(htmlspecialchars($datosPost['path'] ?? ''));
 
     if (empty($descripcionIngresada) || empty($rutaIngresada)) {
         $_SESSION['mensaje_alerta'] = "⚠️ Los campos son obligatorios";
@@ -49,9 +49,60 @@ function altaDeTitulo(mysqli $conexion, array $datosPost): void {
     $resultadoInsertDb = insertaTituloMenu($conexion, $descripcionIngresada, $rutaIngresada);
 
     if ($resultadoInsertDb) {
-        $_SESSION['mensaje_exito'] = "✅ Menú insertado correctamente";
+        $_SESSION['mensaje_exito'] = "✅ Elemento insertado correctamente";
     } else {
-        $_SESSION['mensaje_error'] = "❌ Error al insertar el menú: " . mysqli_error($conexion);
+        $_SESSION['mensaje_error'] = "❌ Error al insertar el elemento";
+    }
+
+    header('Location: index.php?page=/abm_menu');
+    exit();
+}
+
+function modificaTitulo(mysqli $conexion, array $datosPost) :void {
+    $idModificar = filter_var($datosPost['id'] ?? null, FILTER_VALIDATE_INT); // Obtener y validar el ID.
+    $descripcionIngresada = trim(htmlspecialchars($datosPost['title'] ?? ''));
+    $rutaIngresada = trim(htmlspecialchars($datosPost['path'] ?? ''));
+
+    // Corrobora que el ID sea válido y que los campos no estén vacíos
+    if (!$idModificar || empty($descripcionIngresada) || empty($rutaIngresada)) {
+        $_SESSION['mensaje_alerta'] = "⚠️ Todos los campos son obligatorios para modificar.";
+        // Si hay un ID inválido, redirige a la lista; si solo faltan campos, redirige al formulario de edición
+        if ($idModificar) {
+            header('Location: index.php?page=/form_menu&action=edit&id=' . $idModificar);
+        } else {
+            header('Location: index.php?page=/abm_menu'); // Si no hay ID o es inválido, vuelve a la lista
+        }
+        exit();
+    }
+
+    $resultadoUpdateDb = modificaTituloMenu($conexion, $idModificar, $descripcionIngresada, $rutaIngresada);
+
+    if ($resultadoUpdateDb) {
+        $_SESSION['mensaje_exito'] = "✅ Elemento actualizado correctamente";
+    } else {
+        $_SESSION['mensaje_error'] = "❌ Error al actualizar el elemento: " . mysqli_error($conexion);
+    }
+
+    header('Location: index.php?page=/abm_menu'); // Después de la modificación, redirige a la lista
+    exit();
+}
+
+function modificaTitulo(mysqli $conexion, array $datosPost) : void {
+    $idModificar = (int)$datosPost['id'];
+    $descripcionIngresada = trim(htmlspecialchars($datosPost['title'] ?? ''));
+    $rutaIngresada = trim(htmlspecialchars($datosPost['path'] ?? ''));
+
+    if (empty($descripcionIngresada) || empty($rutaIngresada)) {
+        $_SESSION['mensaje_alerta'] = "⚠️ Todos los campos son obligatorios para modificar.";
+        header('Location: index.php?page=/form_menu&action=edit&id=' . $idModificar);
+        exit();
+    }
+
+    // Ejecutamos la actualización
+    if (modificaTituloMenu($conexion, $idModificar, $descripcionIngresada, $rutaIngresada)) {
+        $_SESSION['mensaje_exito'] = "✅ Elemento actualizado correctamente";
+    } else {
+        $_SESSION['mensaje_error'] = "❌ Error al actualizar el elemento";
     }
 
     header('Location: index.php?page=/abm_menu');
@@ -63,13 +114,13 @@ function altaDeTitulo(mysqli $conexion, array $datosPost): void {
 
 // Manejar solicitudes POST.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!$conexion) {
-        $_SESSION['mensaje_error'] = "❌ Error de conexión a la base de datos. Por favor, verifique la configuración.";
+    if (!($conexion instanceof mysqli)) {
+        $_SESSION['mensaje_error'] = "❌ Error de conexión a la base de datos.";
         header('Location: index.php?page=/abm_menu'); // Redirige a la lista si hay error de conexión
         exit();
     }
 
-    altaDeTitulo($conexion, $_POST);
+    altaTitulo($conexion, $_POST);
 }
 
 
@@ -90,4 +141,14 @@ if ($vistaSolicitada === '/form_menu') {
 
 mysqli_connect() devuelve: un objeto mysqli si la conexión es exitosa, y false si falla.
 
-Por lo tanto, !isset($conexion) nunca será true, haciendo redundante la primera parte de la condición. -->
+Por lo tanto, !isset($conexion) nunca será true, haciendo redundante la primera parte de la condición. 
+
+instanceof mysqli asegura que $conexion sea exactamente un objeto mysqli (no false, null, etc.).
+
+filter_var(): Función de PHP para sanitizar (limpiar) y validar datos. Muy importante para la seguridad, ya que ayuda a 
+que los datos que se recibe de fuentes externas (como formularios enviados por usuarios) son del tipo y formato esperados,
+y no contienen código malicioso o inesperado.
+Toma dos argumentos principales: la variable que se quiere filtrar y el tipo de filtro que se quiere aplicar.
+
+FILTER_VALIDATE_INT es una constante que se usa con filter_var(). Valida si una variable es un número entero.
+-->
