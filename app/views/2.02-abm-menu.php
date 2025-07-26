@@ -9,17 +9,17 @@ $titulosMenuABM = obtieneTitulosMenu($conexion);
 
 <!-- Mostrar mensajes de éxito/error -->
 <?php if (isset($_SESSION['mensaje_exito'])): ?>
-    <div id="mensaje-exito" style="color: green;"><?= $_SESSION['mensaje_exito'] ?></div>
+    <div id="mensaje-exito" class="mensaje exito" style="color: green;"><?= $_SESSION['mensaje_exito'] ?></div>
     <?php unset($_SESSION['mensaje_exito']); ?>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['mensaje_error'])): ?>
-    <div id="mensaje-error" style="color: red;"><?= $_SESSION['mensaje_error'] ?></div>
+    <div id="mensaje-error" class="mensaje error"><?= $_SESSION['mensaje_error'] ?></div>
     <?php unset($_SESSION['mensaje_error']); ?>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['mensaje_alerta'])): ?>
-    <div id="mensaje-alerta" style="color: orange;"><?= $_SESSION['mensaje_alerta'] ?></div>
+    <div id="mensaje-alerta" class="mensaje alerta"><?= $_SESSION['mensaje_alerta'] ?></div>
     <?php unset($_SESSION['mensaje_alerta']); ?>
 <?php endif; ?>
 

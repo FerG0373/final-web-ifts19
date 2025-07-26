@@ -11,26 +11,23 @@ function alternarVisibilidad() {
     }
 }
 
-function ocultaMensajeInformacion() {
-    let mensajeIds = ['mensaje-exito', 'mensaje-error', 'mensaje-alerta'];
 
-    mensajeIds.forEach(id => {
-        let mensaje = document.getElementById(id);
-        if (mensaje) {
-            setTimeout(() => {
-                mensaje.style.transition = "opacity 1s ease-out";
-                mensaje.style.opacity = "0";
-
-                setTimeout(() => {
-                    mensaje.style.display = "none";
-                    mensaje.remove();
-                }, 1000); // Duración del fade (debe coincidir con la transición CSS)
-            }, 4000); // Esperar 4 segundos antes de iniciar el fade
-        }
-    });
+// Función para mostrar la fecha formateada.
+function muestraFechaNav() {
+  const fecha = document.getElementById('fecha-actual');
+  
+  function formateaFecha() {
+    const formato = { day: 'numeric', month: 'long', year: 'numeric' };
+    return new Date().toLocaleDateString('es-ES', formato);
+  }  
+  // Actualizar el texto del elemento
+  fecha.textContent = formateaFecha();
 }
 
-// Llama a la función ocultaMensajeInformacion cuando la página ha cargado completamente.
-window.onload = function() {
-    ocultaMensajeInformacion(); 
-};
+
+// Ejecutar cuando el DOM esté listo.
+document.addEventListener('DOMContentLoaded', muestraFechaNav);
+
+
+
+// DOMContentLoaded es un evento que se dispara y ejecutá código JavaScript justo cuando el DOM está preparado (antes de que la página se muestre al usuario). Evita errores al intentar acceder a elementos HTML que aún no existen.
