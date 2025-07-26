@@ -11,7 +11,7 @@ $rutas = [
     '/abm_menu' => __DIR__ . '/controllers/abmMenuController.php',
     '/form_menu' => __DIR__ . '/controllers/abmMenuController.php',
     '/logout' => __DIR__ . '/controllers/logoutController.php'
-];
+];  // __DIR__ retorna la ruta absoluta completa del directorio actual (sin el nombre del archivo).
 
 // Rutas que no requieren autenticación.
 $rutasPublicas = ['/login'];

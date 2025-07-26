@@ -82,7 +82,7 @@ function modificaTitulo(mysqli $conexion, array $datosPost): void {
 }
 
 function bajaTitulo(mysqli $conexion, array $datosPost): void {
-    $idEliminar = filter_var($datosPost['id'] ?? null, FILTER_VALIDATE_INT); // Obtener y validar el ID
+    $idEliminar = filter_var($datosPost['id'] ?? null, FILTER_VALIDATE_INT); // Obtener y validar el ID.
 
     if (!$idEliminar) {
         $_SESSION['mensaje_alerta'] = "⚠️ ID de elemento inválido para eliminar.";
@@ -90,7 +90,7 @@ function bajaTitulo(mysqli $conexion, array $datosPost): void {
         exit();
     }
 
-    $resultadoDeleteDb = eliminaTituloMenu($conexion, $idEliminar); // Llama a la función de dbQueries
+    $resultadoDeleteDb = eliminaTituloMenu($conexion, $idEliminar);
 
     if ($resultadoDeleteDb) {
         $_SESSION['mensaje_exito'] = "✅ Elemento eliminado correctamente.";
@@ -108,7 +108,7 @@ function bajaTitulo(mysqli $conexion, array $datosPost): void {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!($conexion instanceof mysqli)) {
         $_SESSION['mensaje_error'] = "❌ Error de conexión a la base de datos.";
-        header('Location: index.php?page=/abm_menu'); // Redirige a la lista si hay error de conexión
+        header('Location: index.php?page=/abm_menu');
         exit();
     }
 

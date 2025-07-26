@@ -2,30 +2,30 @@
 require_once __DIR__ . '/../config/dbConnection.php';
 require_once __DIR__ . '/../config/dbQueries.php';
 
-$menuTitulosABM = obtieneTitulosMenu($conexion);
+$titulosMenuABM = obtieneTitulosMenu($conexion);
 ?>
 
 <h1>ABM MENU</h1>
 
 <!-- Mostrar mensajes de éxito/error -->
 <?php if (isset($_SESSION['mensaje_exito'])): ?>
-    <div style="color: green;"><?= $_SESSION['mensaje_exito'] ?></div>
+    <div id="mensaje-exito" style="color: green;"><?= $_SESSION['mensaje_exito'] ?></div>
     <?php unset($_SESSION['mensaje_exito']); ?>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['mensaje_error'])): ?>
-    <div style="color: red;"><?= $_SESSION['mensaje_error'] ?></div>
+    <div id="mensaje-error" style="color: red;"><?= $_SESSION['mensaje_error'] ?></div>
     <?php unset($_SESSION['mensaje_error']); ?>
 <?php endif; ?>
 
 <?php if (isset($_SESSION['mensaje_alerta'])): ?>
-    <div style="color: orange;"><?= $_SESSION['mensaje_alerta'] ?></div>
+    <div id="mensaje-alerta" style="color: orange;"><?= $_SESSION['mensaje_alerta'] ?></div>
     <?php unset($_SESSION['mensaje_alerta']); ?>
 <?php endif; ?>
 
 
  <!-- --- Lista de títulos --- -->
-<?php if (empty($menuTitulosABM)): ?>
+<?php if (empty($titulosMenuABM)): ?>
     <p>No hay títulos de menú registrados.</p>
 <?php else: ?>
     <table>
@@ -38,7 +38,7 @@ $menuTitulosABM = obtieneTitulosMenu($conexion);
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($menuTitulosABM as $titulo): ?>
+            <?php foreach ($titulosMenuABM as $titulo): ?>
                 <tr>
                     <td><?= htmlspecialchars($titulo['id']) ?></td>
                     <td><?= htmlspecialchars($titulo['descripcion']) ?></td>
@@ -62,7 +62,7 @@ $menuTitulosABM = obtieneTitulosMenu($conexion);
 <?php endif; ?>
 
 <div>
-    <a href="index.php?page=/form_menu" class="add-button">
+    <a href="index.php?page=/form_menu">
         ➕ Agregar Nuevo Título
     </a>
 </div>
