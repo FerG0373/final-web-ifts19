@@ -152,24 +152,24 @@ function modificaTituloMenu(mysqli $conexion, int $id, string $nuevaDescripcion,
     return $resultadoExito;  // true o false.
 }
 
-// NUEVA FUNCIÓN: Eliminar un título de menú
-function deleteTituloMenu($conexion, $id): bool {
-    $sentenciaSql = "DELETE FROM menu WHERE id = ?";
-    $stmt = mysqli_prepare($conexion, $sentenciaSql);
+// Para eliminar un título.
+function eliminaTituloMenu(mysqli $conexion, int $id): bool {
+    $sql = "DELETE FROM menu WHERE id = ?";
+    $stmt = mysqli_prepare($conexion, $sql);
 
     if ($stmt === false) {
-        error_log("Error al preparar la consulta (deleteTituloMenu): " . mysqli_error($conexion));
+        error_log("Error al preparar la consulta: " . mysqli_error($conexion));
         return false;
     }
 
-    mysqli_stmt_bind_param($stmt, "i", $id); // "i" para entero
-    $resultado = mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    $resultadoExito = mysqli_stmt_execute($stmt);
 
-    if (!$resultado) {
-        error_log("Error al ejecutar la consulta (deleteTituloMenu): " . mysqli_stmt_error($stmt));
+    if (!$resultadoExito) {
+        error_log("Error al ejecutar la consulta: " . mysqli_stmt_error($stmt));
     }
 
     mysqli_stmt_close($stmt);
-    return $resultado;
+    return $resultadoExito;
 }
 ?>

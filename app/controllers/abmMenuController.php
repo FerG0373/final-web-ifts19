@@ -58,36 +58,7 @@ function altaTitulo(mysqli $conexion, array $datosPost): void {
     exit();
 }
 
-function modificaTitulo(mysqli $conexion, array $datosPost) :void {
-    $idModificar = filter_var($datosPost['id'] ?? null, FILTER_VALIDATE_INT); // Obtener y validar el ID.
-    $descripcionIngresada = trim(htmlspecialchars($datosPost['title'] ?? ''));
-    $rutaIngresada = trim(htmlspecialchars($datosPost['path'] ?? ''));
-
-    // Corrobora que el ID sea válido y que los campos no estén vacíos
-    if (!$idModificar || empty($descripcionIngresada) || empty($rutaIngresada)) {
-        $_SESSION['mensaje_alerta'] = "⚠️ Todos los campos son obligatorios para modificar.";
-        // Si hay un ID inválido, redirige a la lista; si solo faltan campos, redirige al formulario de edición
-        if ($idModificar) {
-            header('Location: index.php?page=/form_menu&action=edit&id=' . $idModificar);
-        } else {
-            header('Location: index.php?page=/abm_menu'); // Si no hay ID o es inválido, vuelve a la lista
-        }
-        exit();
-    }
-
-    $resultadoUpdateDb = modificaTituloMenu($conexion, $idModificar, $descripcionIngresada, $rutaIngresada);
-
-    if ($resultadoUpdateDb) {
-        $_SESSION['mensaje_exito'] = "✅ Elemento actualizado correctamente";
-    } else {
-        $_SESSION['mensaje_error'] = "❌ Error al actualizar el elemento: " . mysqli_error($conexion);
-    }
-
-    header('Location: index.php?page=/abm_menu'); // Después de la modificación, redirige a la lista
-    exit();
-}
-
-function modificaTitulo(mysqli $conexion, array $datosPost) : void {
+function modificaTitulo(mysqli $conexion, array $datosPost): void {
     $idModificar = (int)$datosPost['id'];
     $descripcionIngresada = trim(htmlspecialchars($datosPost['title'] ?? ''));
     $rutaIngresada = trim(htmlspecialchars($datosPost['path'] ?? ''));
@@ -99,7 +70,8 @@ function modificaTitulo(mysqli $conexion, array $datosPost) : void {
     }
 
     // Ejecutamos la actualización
-    if (modificaTituloMenu($conexion, $idModificar, $descripcionIngresada, $rutaIngresada)) {
+    $resultadoUpdateDb = modificaTituloMenu($conexion, $idModificar, $descripcionIngresada, $rutaIngresada);
+    if ($resultadoUpdateDb) {
         $_SESSION['mensaje_exito'] = "✅ Elemento actualizado correctamente";
     } else {
         $_SESSION['mensaje_error'] = "❌ Error al actualizar el elemento";
@@ -109,6 +81,26 @@ function modificaTitulo(mysqli $conexion, array $datosPost) : void {
     exit();
 }
 
+function bajaTitulo(mysqli $conexion, array $datosPost): void {
+    $idEliminar = filter_var($datosPost['id'] ?? null, FILTER_VALIDATE_INT); // Obtener y validar el ID
+
+    if (!$idEliminar) {
+        $_SESSION['mensaje_alerta'] = "⚠️ ID de elemento inválido para eliminar.";
+        header('Location: index.php?page=/abm_menu');
+        exit();
+    }
+
+    $resultadoDeleteDb = eliminaTituloMenu($conexion, $idEliminar); // Llama a la función de dbQueries
+
+    if ($resultadoDeleteDb) {
+        $_SESSION['mensaje_exito'] = "✅ Elemento eliminado correctamente.";
+    } else {
+        $_SESSION['mensaje_error'] = "❌ Error al eliminar el elemento.";
+    }
+
+    header('Location: index.php?page=/abm_menu');
+    exit();
+}
 
 // --- Lógica principal del controlador ---
 
@@ -120,7 +112,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    altaTitulo($conexion, $_POST);
+    if (isset($_POST['action']) && $_POST['action'] === 'delete') {
+        bajaTitulo($conexion, $_POST);
+    } else if (isset($_POST['id'])) {
+        modificaTitulo($conexion, $_POST);
+    }  else {
+        altaTitulo($conexion, $_POST);
+    }
 }
 
 

@@ -6,6 +6,7 @@ $pass = '';
 $db = 'tp_final_giphy';
 
 $conexion = mysqli_connect($host, $user, $pass, $db);
+mysqli_report(MYSQLI_REPORT_OFF);  // Desactiva los errores de mysqli para manejarlos manualmente porque sino no me muestra los errores de mysqli en el navegador.
 
 if (!$conexion) {
     http_response_code(500);

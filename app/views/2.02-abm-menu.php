@@ -46,7 +46,7 @@ $menuTitulosABM = obtieneTitulosMenu($conexion);
                     <td>
                         <?php if ($titulo['id'] > 5): ?>
                             <a href="index.php?page=/form_menu&action=edit&id=<?= htmlspecialchars($titulo['id']) ?>" title="Editar">✏️</a>
-                            <form action="index.php?page=/abm_menu" method="POST" class="delete-form">
+                            <form action="index.php?page=/abm_menu" method="POST">
                                 <input type="hidden" name="action" value="delete">
                                 <input type="hidden" name="id" value="<?= ($titulo['id']) ?>">
                                 <button type="submit" onclick="return confirm('¿Está seguro que desea eliminar este título?');" title="Eliminar">🗑️</button>
