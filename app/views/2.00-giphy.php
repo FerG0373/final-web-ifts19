@@ -22,5 +22,5 @@
 <script src="assets/js/giphy.js"></script>
 <script>
     // Llama a la función con la API key después de cargar giphy.js
-    buscarGifRandom('<?= htmlspecialchars($giphyApiKey ?? '') ?>');
+    buscarGifsRandom('<?= htmlspecialchars($giphyApiKey ?? '') ?>');
 </script>
