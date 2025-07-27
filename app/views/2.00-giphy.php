@@ -15,13 +15,12 @@
 </div>
 
 <p>ZONA DE GIFS RANDOM</p>
-<div id="container-resultados-random">
+<div id="container-resultado-random">
     <p>Cargando GIFs...</p>
 </div>
 
-
-
-<!-- Inyectar la API Key de Giphy en una variable JavaScript global -->
+<script src="assets/js/giphy.js"></script>
 <script>
-    const GIPHY_API_KEY_CLIENTE = '<?= htmlspecialchars($giphyApiKey ?? '') ?>';
+    // Llama a la función con la API key después de cargar giphy.js
+    buscarGifRandom('<?= htmlspecialchars($giphyApiKey ?? '') ?>');
 </script>

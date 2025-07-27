@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2025 a las 02:19:00
+-- Tiempo de generación: 27-07-2025 a las 15:37:27
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -62,7 +62,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `nombre`, `pass`) VALUES
-(1, 'admin1', '1234\r\n                                           ');
+(1, 'admin1', '1234');
 
 --
 -- Índices para tablas volcadas

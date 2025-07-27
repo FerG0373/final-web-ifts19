@@ -14,7 +14,7 @@
     <?php 
         // Muestra mensaje de error según corresponda.
         if (isset($_SESSION['login_error'])): ?>
-        <div>
+        <div class="mensaje error">
             <?php echo($_SESSION['login_error']); ?>
         </div>
         <?php unset($_SESSION['login_error']); ?>

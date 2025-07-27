@@ -1,3 +1,25 @@
+// 1. Funciones exclusiva para /login:
+function muestraFechaNav() {
+  const fecha = document.getElementById('fecha-actual');
+  
+  // Si el elemento no existe, salir de la función.
+  if (!fecha) return;
+  
+  // Formato en español (día-mes-año).
+  const formato = new Intl.DateTimeFormat('es-ES', { 
+    day: '2-digit',  // Día con 2 dígitos.
+    month: 'short',  // Mes abreviado.
+    year: 'numeric'  // Año completo.
+  });
+  
+  const fechaFormateada = formato.format(new Date())
+  .replace(/ /g, '-')  // Reemplaza todos (g) los espacios (/ /) por guiones.
+  .replace(/\b\w/g, letra => letra.toUpperCase()); // Mayúscula inicial en mes
+  
+  fecha.textContent = fechaFormateada;
+}
+
+
 function alternarVisibilidad() {
     const campoPassword = document.getElementById('pass');
     const iconoAlternable = document.querySelector('.material-symbols-outlined');
@@ -9,23 +31,6 @@ function alternarVisibilidad() {
         campoPassword.type = 'password';
         iconoAlternable.textContent = 'visibility_off';
     }
-}
-
-function muestraFechaNav() {
-  const fecha = document.getElementById('fecha-actual');
-  
-  // Formato en español (día-mes-año).
-  const formato = new Intl.DateTimeFormat('es-ES', { 
-    day: '2-digit',  // Día con 2 dígitos.
-    month: 'short',  // Mes abreviado.
-    year: 'numeric'  // Año completo.
-  });
-  
-  const fechaFormateada = formato.format(new Date())
-    .replace(/ /g, '-')  // Reemplaza todos (g) los espacios (/ /) por guiones.
-    .replace(/\b\w/g, letra => letra.toUpperCase()); // Mayúscula inicial en mes
-
-  fecha.textContent = fechaFormateada;
 }
 
 
