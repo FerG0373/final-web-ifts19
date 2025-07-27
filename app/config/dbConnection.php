@@ -1,11 +1,14 @@
-<!-- Accede a la base de datos mySql(mariadb). -->
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db = 'tp_final_giphy';
+$env = parse_ini_file(__DIR__ . '/../../.env');  // Carga las variables de entorno desde el archivo .env
 
-$conexion = mysqli_connect($host, $user, $pass, $db);
+$conexion = mysqli_connect(
+    $env['DB_HOST'],
+    $env['DB_USER'],
+    $env['DB_PASS'],
+    $env['DB_NAME']
+);
+
+//$conexion = mysqli_connect($host, $user, $pass, $db);
 mysqli_report(MYSQLI_REPORT_OFF);  // Desactiva los errores de mysqli para manejarlos manualmente porque sino no me muestra los errores de mysqli en el navegador.
 
 if (!$conexion) {

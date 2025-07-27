@@ -54,6 +54,7 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/giphy.js"></script>
 </body>
 </html>
 

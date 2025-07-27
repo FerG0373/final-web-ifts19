@@ -20,6 +20,7 @@ function obtieneTitulosMenu(mysqli $conexion): array {
     
     return $titulosMenu;
 }
+
 // Para loguear al usuario.
 function obtieneUsuarioPorNombre(mysqli $conexion, string $nombreUsuario): ?array {    
     // 1. Validar entrada de usuario.
@@ -72,6 +73,7 @@ function obtieneUsuarioPorNombre(mysqli $conexion, string $nombreUsuario): ?arra
     
     return $datosUsuario;
 }
+
 // Para insertar un título en la base de datos.
 function insertaTituloMenu(mysqli $conexion, string $descripcion, string $ruta) {
     $sql  = "INSERT INTO menu (descripcion, ruta_destino) VALUES (?, ?)";
@@ -98,6 +100,7 @@ function insertaTituloMenu(mysqli $conexion, string $descripcion, string $ruta) 
     mysqli_stmt_close($stmt);    
     return $resultado;  // True o False.
 }
+
 // Para precargar el formulario de edición.
 function obtieneTituloMenuPorId(mysqli $conexion, int $id): ?array {
     $sentenciaSql = "SELECT id, descripcion, ruta_destino FROM menu WHERE id = ?";

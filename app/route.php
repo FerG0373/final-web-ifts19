@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 $rutas = [
     '/login' => __DIR__ . '/controllers/loginController.php',
     '/home' => __DIR__ . '/views/1.01-home.php',
-    '/giphy' => __DIR__ . '/views/2.00-giphy.php',
+    '/giphy' => __DIR__ . '/controllers/giphyController.php',
     '/landing_page' => __DIR__ . '/views/2.01-landing-page.php',
     '/abm_menu' => __DIR__ . '/controllers/abmMenuController.php',
     '/form_menu' => __DIR__ . '/controllers/abmMenuController.php',
