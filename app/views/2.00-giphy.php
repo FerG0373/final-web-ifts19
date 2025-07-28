@@ -5,6 +5,8 @@
 <div id="container-busqueda">
     <label for="input-busqueda-giphy">Buscar</label>
     <input type="text" id="input-busqueda-giphy" placeholder="Buscá los GIFs que quieras...">
+    <label for="">Límite</label>
+    <input type="text" id="input-limite-giphy" placeholder="Cantidad de GIFs a buscar (máx. 40)">
     <button id="button-busqueda-giphy" onclick="">Lupa</button>
 </div>
 

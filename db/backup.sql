@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-07-2025 a las 15:37:27
+-- Tiempo de generación: 28-07-2025 a las 13:43:22
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,7 +43,7 @@ INSERT INTO `menu` (`id`, `descripcion`, `ruta_destino`, `orden`) VALUES
 (2, 'Landing Page', '/landing_page', 2),
 (3, 'ABM Menues', '/abm_menu', 3),
 (4, 'Inicio', '/home', 4),
-(5, 'Cerrar Sesión', '/logout', 5);
+(5, 'LogOut', '/logout', 5);
 
 -- --------------------------------------------------------
 
