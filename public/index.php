@@ -37,7 +37,7 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
 <body>
     <header>
         <?php
-        // Si la vista solicitada es 'login', no incluimos el header.
+        // Si la vista solicitada es 'login', no incluimos el _header de los títulos, incluimos el otro.
         if ($vista_solicitada !== '/login') {
             require_once __DIR__ . '/../app/views/_partials/_header.php';
         } else {

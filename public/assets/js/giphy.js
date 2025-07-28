@@ -1,4 +1,4 @@
-function buscarGifsRandom(apiKey) {
+function cargaGifsRandom(apiKey) {
     // 1. Obtener el container en HTML.
     const container = document.getElementById('container-resultado-random');
     // 2. Limpiar el container antes de agregar los GIFs.
@@ -22,11 +22,49 @@ function buscarGifsRandom(apiKey) {
 }
 
 
+function buscaGifs(apiKey, elementoBuscado) {
+    const container = document.getElementById('container-resultados-busqueda');
+    container.innerHTML = '';
+
+    fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${elementoBuscado}&limit=8&rating=g`)
+        .then(response => response.json())
+        .then(data => {
+            container.innerHTML = '';
+            data.data.forEach(gif => {
+                const img = document.createElement('img');
+                img.src = gif.images.original.url;
+                img.alt = gif.title || 'GIF de Giphy';
+                img.classList.add('gif-item');
+                container.appendChild(img);
+            });
+        });
+}
+
+// Evento del botón.
+document.getElementById('button-busqueda-giphy').onclick = () => {
+    const elementoBuscado = document.getElementById('input-busqueda-giphy').value.trim();
+    if (elementoBuscado) buscaGifs(giphyApiKey, elementoBuscado);
+};
 
 
 
 
-// function buscarGifRandom(apiKey) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function gifRandom(apiKey) {
 //     fetch(`https://api.giphy.com/v1/gifs/random?api_key=${apiKey}&tag=&rating=g`)
 //     .then(response => response.json())
 //     .then(data => {

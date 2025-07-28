@@ -4,14 +4,13 @@
 
 <div id="container-busqueda">
     <label for="input-busqueda-giphy">Buscar</label>
-    <input type="text" id="input-busqueda-giphy" placeholder="Buscá los GIFs que quieras..." value="">
-    <button id="button-busqueda-giphy">Lupa</button>
+    <input type="text" id="input-busqueda-giphy" placeholder="Buscá los GIFs que quieras...">
+    <button id="button-busqueda-giphy" onclick="">Lupa</button>
 </div>
 
 <p>ZONA DE GIFS OBTENIDOS EN LA BÚSQUEDA</p>
 <div id="container-resultados-busqueda">
-    <!-- Los GIFs se insertarán acá dinámicamente con JavaScript -->
-    <p>Cargando GIFs...</p>
+    <p>...Buscá tus GIFs...</p>
 </div>
 
 <p>ZONA DE GIFS RANDOM</p>
@@ -22,5 +21,6 @@
 <script src="assets/js/giphy.js"></script>
 <script>
     // Llama a la función con la API key después de cargar giphy.js
-    buscarGifsRandom('<?= htmlspecialchars($giphyApiKey ?? '') ?>');
+    const giphyApiKey = "<?= htmlspecialchars($giphyApiKey ?? '') ?>";  // Trae la API Key desde php a JavaScript.
+    cargaGifsRandom(giphyApiKey);
 </script>
