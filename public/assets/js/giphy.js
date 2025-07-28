@@ -22,7 +22,7 @@ function cargaGifsRandom(apiKey) {
 }
 
 
-function buscaGifs(apiKey, elementoBuscado, limite = 4) {
+function buscaGifs(apiKey, elementoBuscado, limite) {
     const container = document.getElementById('container-resultados-busqueda');
     container.textContent = '';
 
@@ -43,27 +43,53 @@ function buscaGifs(apiKey, elementoBuscado, limite = 4) {
         });
 }
 
-// Evento del botón.
-document.getElementById('button-busqueda-giphy').onclick = () => {
+// Función para ejectar la función buscaGifs().
+function ejecutarBusqueda() {
     const elementoBuscado = document.getElementById('input-busqueda-giphy').value.trim();
-    const limite = document.getElementById('input-limite-giphy').value.trim() || 4; // Valor 4 por defecto si no se especifica.
+    const limite = parseInt(document.getElementById('input-limite-giphy').value.trim()) || 4;
     if (elementoBuscado) buscaGifs(giphyApiKey, elementoBuscado, limite);
-};
+}
+
+// Función para manejar el evento keydown y disparar la búsqueda si se presiona Enter.
+const teclaEnter = (e) => {
+    if (e.key === 'Enter') ejecutarBusqueda();
+}
+
+document.getElementById('input-busqueda-giphy').addEventListener('keydown', teclaEnter);
+document.getElementById('input-limite-giphy').addEventListener('keydown', teclaEnter);
+document.getElementById('button-busqueda-giphy').addEventListener('click', ejecutarBusqueda);
 
 
 
 
+// // Evento del botón (click).
+// document.getElementById('button-busqueda-giphy').addEventListener('click', () => {    
+//     let elementoBuscado = document.getElementById('input-busqueda-giphy').value.trim();
+//     let limite = parseInt(document.getElementById('input-limite-giphy').value.trim()) || 4; // Valor 4 por defecto si no se especifica.
+//     if (elementoBuscado) buscaGifs(giphyApiKey, elementoBuscado, limite);
+// });
 
 
+// // Evento del input (keydown)
+// document.getElementById('input-busqueda-giphy').addEventListener('keydown', (e) => {
+//     if (e.key === 'Enter') {
+//         let elementoBuscado = e.target.value.trim();
+//         let limite = parseInt(document.getElementById('input-limite-giphy').value.trim()) || 4;
+//         if (elementoBuscado) buscaGifs(giphyApiKey, elementoBuscado, limite);
+//     }
+// });
+
+// // Evento del limite (keydown)
+// document.getElementById('input-limite-giphy').addEventListener('keydown', (e) => {
+//     if (e.key === 'Enter') {
+//         let elementoBuscado = document.getElementById('input-busqueda-giphy').value.trim();
+//         let limite = parseInt(e.target.value.trim()) || 4; // Usamos e.target para el límite
+//         if (elementoBuscado) buscaGifs(giphyApiKey, elementoBuscado, limite);
+//     }
+// });
 
 
-
-
-
-
-
-
-
+// Uso e.target en vez de getElementById porque es más directo y rápido, en este caso, al tener un evento delegado.
 
 
 

@@ -38,10 +38,6 @@ function alternarVisibilidad() {
 document.addEventListener('DOMContentLoaded', muestraFechaNav);
 
 
-
-
-
-
 // --- Explicación: ---
 // DOMContentLoaded es un evento que se dispara y ejecutá código JavaScript justo cuando el DOM está preparado (antes de que la página se muestre al usuario). Evita errores al intentar acceder a elementos HTML que aún no existen.
 // Estructura del replace(/expresión-regular/, "reemplazo"). \b: Borde de palabra (Boundary). \w: Word character (letra/número).
