@@ -55,10 +55,26 @@ const teclaEnter = (e) => {
     if (e.key === 'Enter') ejecutarBusqueda();
 }
 
+document.getElementById('button-busqueda-giphy').addEventListener('click', ejecutarBusqueda);
 document.getElementById('input-busqueda-giphy').addEventListener('keydown', teclaEnter);
 document.getElementById('input-limite-giphy').addEventListener('keydown', teclaEnter);
-document.getElementById('button-busqueda-giphy').addEventListener('click', ejecutarBusqueda);
 
+document.getElementById('input-limite-giphy').addEventListener('input', (e) => {
+    if (parseInt(e.target.value) > 40) {
+        e.target.value = 40;
+        alert("El límite máximo es 40.");
+    }
+});
+
+
+// document.getElementById('input-limite-giphy').addEventListener('input', (e) => {
+//     let valor = parseInt(e.target.value);
+//     if (valor > 40) {
+//         // Uso e.target en vez de getElementById porque es más directo y rápido, en este caso, al tener un evento delegado.
+//         e.target.value = 40;
+//         alert("El límite máximo es 40");
+//     }
+// });
 
 
 
@@ -79,6 +95,7 @@ document.getElementById('button-busqueda-giphy').addEventListener('click', ejecu
 //     }
 // });
 
+
 // // Evento del limite (keydown)
 // document.getElementById('input-limite-giphy').addEventListener('keydown', (e) => {
 //     if (e.key === 'Enter') {
@@ -87,11 +104,6 @@ document.getElementById('button-busqueda-giphy').addEventListener('click', ejecu
 //         if (elementoBuscado) buscaGifs(giphyApiKey, elementoBuscado, limite);
 //     }
 // });
-
-
-// Uso e.target en vez de getElementById porque es más directo y rápido, en este caso, al tener un evento delegado.
-
-
 
 
 // function gifRandom(apiKey) {
