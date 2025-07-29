@@ -30,7 +30,11 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IFTS 19 - Web</title>
+    <!-- 1. Google -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- 2. Estilos propios -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/giphy.css">
 </head>
@@ -51,10 +55,12 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
         ?>
     </main>
     <footer>
-        
+        <?php
+        include __DIR__ . '/../app/views/_partials/_footer.php'
+        ?>
     </footer>
 
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/app.js"></script>
 </body>
 </html>
 

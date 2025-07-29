@@ -1,4 +1,4 @@
-<h1>Buscador de GIFs con Giphy</h1>
+<h2>Buscador de GIFs con Giphy</h2>
 
 <img src="" alt="Logo Gif.os">
 

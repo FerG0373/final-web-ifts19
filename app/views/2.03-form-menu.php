@@ -1,4 +1,4 @@
-<h1><?= isset($tituloEditar) ? 'Editar Título' : 'Agregar Título' ?></h1>
+<h2><?= isset($tituloEditar) ? 'Editar Título' : 'Agregar Título' ?></h2>
 
 <form action="index.php?page=/abm_menu" method="POST">
     <?php if (isset($tituloEditar)): ?>

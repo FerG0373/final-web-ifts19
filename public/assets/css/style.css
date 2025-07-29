@@ -1,10 +1,60 @@
-/* Reset básico */
-/* * {
+/* ESTILOS NAV LOGIN */
+.nav-login {
+    background-color: var(--color-fondo-nav-login);
+    color: var(--color-texto-nav-login);
+    padding: 1rem 2rem;
+    font-family: var(--fuente-nav-login);
+}
+
+/* Contenedor principal */
+.nav-login__contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* Logo IFTS*/
+.nav-login__logo {
+    height: 3.125rem;
+    width: auto;
+}
+
+/* Título */
+.nav-login__titulo {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-} */
+    font-size: 1.3rem;
+}
+
+/* Elementos del nav */
+.nav-login__elementos {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+}
+
+/* Ícono de cambio de tema */
+.nav-login__tema {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+.nav-login__tema:hover {
+    transform: scale(1.1);
+}
+
+/* Fecha */
+.nav-login__fecha {
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    min-width: 150px;
+    text-align: center;
+}
+
+
+
 
 
 .mensaje {

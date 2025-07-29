@@ -5,7 +5,7 @@ require_once __DIR__ . '/../config/dbQueries.php';
 $titulosMenuABM = obtieneTitulosMenu($conexion);
 ?>
 
-<h1>ABM MENU</h1>
+<h2>ABM MENU</h2>
 
 <!-- Mostrar mensajes de éxito/error -->
 <?php if (isset($_SESSION['mensaje_exito'])): ?>

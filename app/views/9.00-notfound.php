@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>NOT FOUND - 404</h1>
+    <h2>NOT FOUND - 404</h2>
 </body>
 </html>
