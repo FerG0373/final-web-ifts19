@@ -6,7 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
 // 1. Carga configuración de .env
 $env = parse_ini_file(__DIR__ . '/../../.env');
 
-
 // 2. Obtiene la API Key de Giphy desde el .env y la asigna a una variable PHP.
 $giphyApiKey = $env['GIPHY_API_KEY'] ?? '';
 

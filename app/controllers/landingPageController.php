@@ -1,3 +1,7 @@
 <?php
-include __DIR__ . '/../../public/landing-page/index.html';
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once __DIR__ . '/../views/2.01-landing-page.php';
 ?>
