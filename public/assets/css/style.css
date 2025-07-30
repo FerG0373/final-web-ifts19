@@ -3,57 +3,57 @@
 /* ########################################################################## */
 
 .nav-login {
-    background-color: var(--color-fondo-nav-login);
-    color: var(--color-texto-nav-login);
-    padding: 1rem 2rem;
-    font-family: var(--fuente-nav-login);
+  background-color: var(--color-fondo-nav-login);
+  color: var(--color-texto-nav-login);
+  padding: 1rem 2rem;
+  font-family: var(--fuente-nav-login);
 }
 
 /* Contenedor principal */
 .nav-login-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1500px;
-    margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1500px;
+  margin: 0 auto;
 }
 
 /* Logo IFTS*/
 .nav-login-logo {
-    height: 3.125rem;
-    width: auto;
+  height: 3.125rem;
+  width: auto;
 }
 
 /* Título */
 .nav-title {
-    margin: 0;
-    font-size: 1.3rem;
+  margin: 0;
+  font-size: 1.3rem;
 }
 
 /* Elementos del nav */
 .group-nav-elements {
-    display: flex;
-    align-items: center;
-    gap: 3.5rem;
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
 }
 
 /* Ícono de cambio de tema */
 .nav-login-theme {
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
 }
 .nav-login-theme:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 /* Fecha */
 .nav-date {
-    font-size: 1.2rem;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    min-width: 150px;
-    text-align: center;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  min-width: 150px;
+  text-align: center;
 }
 
 
@@ -63,151 +63,114 @@
 
 /* Contenedor principal del formulario */
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 200px);   /* Permite ocupar el 100% del alto visible de la pantalla y le resta 200px para dejar espacio el header y footer */
-    padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);   /* Permite ocupar el 100% del alto visible de la pantalla y le resta 200px para dejar espacio el header y footer */
+  padding: 2rem;
 }
 
 /* Formulario */
 .login-form {
-    max-width: 25rem;
-    width: 100%;
-    margin: 0 auto;   /* No deja espacio extra arriba ni abajo; auto calcula automáticamente los márgenes izquierdo y derecho, centrándolo. */
-    padding: 2.5rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 5px 50px rgba(0, 0, 0, 0.25);   /* Primer valor: desplazamiento en eje-x; Segundo valor: eje-y; Tercer valor: indica qué tan difuminada es la sombra; Cuarto valor: color y opacidad de la sombra */
-    font-family: var(--fuente-login);
+  max-width: 25rem;
+  width: 100%;
+  margin: 0 auto;   /* No deja espacio extra arriba ni abajo; auto calcula automáticamente los márgenes izquierdo y derecho, centrándolo. */
+  padding: 2.5rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.25);   /* Primer valor: desplazamiento en eje-x; Segundo valor: eje-y; Tercer valor: indica qué tan difuminada es la sombra; Cuarto valor: color y opacidad de la sombra */
+  font-family: var(--fuente-login);
 }
 
 /* Título */
-.title {
-    color: var(--color-titulo-login);
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.8rem;
+.form-title {
+  color: var(--color-titulo-login);
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
 }
 
-/* Grupos de formulario */
+/* Grupos de elementos */
 .form-group {
-    margin-bottom: 1.8rem;
-    position: relative;   /* permite que los elementos hijos con posición absoluta se posicionen en relación del elemento padre */
+  margin-bottom: 1.8rem;
+  position: relative;   /* permite que los elementos hijos con posición absoluta se posicionen en relación del elemento padre */
 }
 
+/* Contenedor de elementos de contraseña */
 .password-container {
-    margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* Labels */
 .form-label {
-    display: block;
-    margin-bottom: 0.6rem;
-    color: #2c3e50;
-    font-weight: 500;
-    font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #2c3e50;
+  font-size: 0.95rem;
 }
 
 /* Inputs */
 .form-input {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
-
 .form-input:focus {
-    border-color: #3498db;
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 
-/* Password toggle */
+/* Alternar contraseña */
 .password-toggle {
-    position: absolute;
-    right: 12px;
-    top: 38px;
-    cursor: pointer;
-    color: #7f8c8d;
-    transition: color 0.2s;
+  position: absolute;
+  right: 12px;
+  top: 45px;
+  cursor: pointer;
+  color: #7f8c8d;
+  transition: color 0.2s;
 }
-
 .password-toggle:hover {
-    color: #2c3e50;
+  color: #2c3e50;
 }
 
 /* Botón */
 .submit-btn {
-    width: 100%;
-    padding: 1rem;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s;
-    margin-top: 0.8rem;
+  width: 100%;
+  padding: 1rem;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 0.8rem;
 }
-
 .submit-btn:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
+  background-color: #2980b9;
+  transform: translateY(-2px);
 }
-
 .submit-btn:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* Mensaje de error */
-.mensaje.error {
-    color: #e74c3c;
-    background-color: #fadbd8;
-    padding: 0.9rem;
-    border-radius: 8px;
-    margin: 1.2rem 0;
-    border-left: 4px solid #e74c3c;
-    font-size: 0.95rem;
-    animation: fadeIn 0.4s ease-out;
+.error-message {
+  color: #e74c3c;
+  background-color: #fadbd8;
+  padding: 0.9rem;
+  border-radius: 8px;
+  margin: 1.2rem 0;
+  border-left: 4px solid #e74c3c;
+  font-size: 0.95rem;
+  animation: fadeIn 0.4s ease-out;
+  animation: fadeOut 1s ease-out 4s forwards;
 }
-
-/* Responsive */
-@media (max-width: 480px) {
-    .login-form {
-        padding: 1.8rem;
-    }
-    
-    .login-title {
-        font-size: 1.6rem;
-    }
-    
-    .form-input {
-        padding: 0.8rem;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.mensaje {
-    animation: fadeOut 1s ease-out 4s forwards;
-}
-
 @keyframes fadeOut {
     to { opacity: 0; display: none; }
 }
@@ -220,3 +183,7 @@
 
 /* Los @keyframes son una regla de CSS que permite crear animaciones personalizadas definiendo cómo un elemento debe cambiar sus estilos a lo largo de una secuencia de tiempo. Se usan junto con la propiedad animation, como por ejemplo, fadeOut */
 
+
+/* ########################################################################## */
+/* - - - - - - - - - - - - - -  FOOTER LOGIN - - - - - - - - - - - - - - - -  */
+/* ########################################################################## */
