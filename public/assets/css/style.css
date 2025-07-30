@@ -1,12 +1,22 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;   /* Necesario para sticky footer (footer abajo de todo) */
+}
+
+footer {
+    margin-top: auto;   /* Necesario para sticky footer (footer abajo de todo) */
+}
+
 /* ########################################################################## */
 /* - - - - - - - - - - - - - - NAV LOGIN - - - - - - - - - - - - - - - - - -  */
 /* ########################################################################## */
 
 .nav-login {
-  background-color: var(--color-fondo-nav-login);
-  color: var(--color-texto-nav-login);
+  background-color: var(--color-principal-login);
+  color: var(--color-secundario-login);
   padding: 1rem 2rem;
-  font-family: var(--fuente-nav-login);
+  font-family: var(--fuente-principal);
 }
 
 /* Contenedor principal */
@@ -76,15 +86,15 @@
   width: 100%;
   margin: 0 auto;   /* No deja espacio extra arriba ni abajo; auto calcula automáticamente los márgenes izquierdo y derecho, centrándolo. */
   padding: 2.5rem;
-  background: white;
+  background: var(--color-secundario-login);
   border-radius: 12px;
   box-shadow: 0 5px 50px rgba(0, 0, 0, 0.25);   /* Primer valor: desplazamiento en eje-x; Segundo valor: eje-y; Tercer valor: indica qué tan difuminada es la sombra; Cuarto valor: color y opacidad de la sombra */
-  font-family: var(--fuente-login);
+  font-family: var(--fuente-principal);
 }
 
 /* Título */
 .form-title {
-  color: var(--color-titulo-login);
+  color: var(--color-principal-login);
   text-align: center;
   margin-bottom: 2rem;
   font-size: 1.8rem;
@@ -105,7 +115,7 @@
 .form-label {
   display: block;
   margin-bottom: 0.6rem;
-  color: #2c3e50;
+  color: var(--color-principal-login);
   font-size: 0.95rem;
 }
 
@@ -119,7 +129,7 @@
   transition: all 0.3s ease;
 }
 .form-input:focus {
-  border-color: #3498db;
+  border-color: var(--color-terciario-login);
   outline: none;
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
@@ -134,15 +144,15 @@
   transition: color 0.2s;
 }
 .password-toggle:hover {
-  color: #2c3e50;
+  color: var(--color-principal-login);
 }
 
 /* Botón */
 .submit-btn {
   width: 100%;
   padding: 1rem;
-  background-color: #3498db;
-  color: white;
+  background-color: var(--color-terciario-login);
+  color: var(--color-secundario-login);
   border: none;
   border-radius: 8px;
   font-size: 1.05rem;
@@ -153,7 +163,7 @@
 }
 .submit-btn:hover {
   background-color: #2980b9;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 .submit-btn:active {
   transform: translateY(0);
@@ -161,12 +171,12 @@
 
 /* Mensaje de error */
 .error-message {
-  color: #e74c3c;
+  color: var(--color-error);
   background-color: #fadbd8;
   padding: 0.9rem;
   border-radius: 8px;
   margin: 1.2rem 0;
-  border-left: 4px solid #e74c3c;
+  border-left: 4px solid var(--color-error);
   font-size: 0.95rem;
   animation: fadeIn 0.4s ease-out;
   animation: fadeOut 1s ease-out 4s forwards;
@@ -174,6 +184,7 @@
 @keyframes fadeOut {
     to { opacity: 0; display: none; }
 }
+/* Los @keyframes son una regla de CSS que permite crear animaciones personalizadas definiendo cómo un elemento debe cambiar sus estilos a lo largo de una secuencia de tiempo. Se usan junto con la propiedad animation, como por ejemplo, fadeOut */
 
 /* Colores personalizados */
 .mensaje.exito { color: green; }
@@ -181,9 +192,6 @@
 .mensaje.error { color: red; }
 
 
-/* Los @keyframes son una regla de CSS que permite crear animaciones personalizadas definiendo cómo un elemento debe cambiar sus estilos a lo largo de una secuencia de tiempo. Se usan junto con la propiedad animation, como por ejemplo, fadeOut */
 
 
-/* ########################################################################## */
-/* - - - - - - - - - - - - - -  FOOTER LOGIN - - - - - - - - - - - - - - - -  */
-/* ########################################################################## */
+

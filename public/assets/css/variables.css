@@ -5,15 +5,9 @@
     --fuente-principal: "PT Sans", sans-serif;
 
     /* Colores Globales */
-    --color-principal: #2c3e50;
-    --color-secundario: #ffffff;
+    --color-principal-login: #2c3e50;
+    --color-secundario-login: #ffffff;
+    --color-terciario-login: #3498db;
 
-    /* NAV LOGIN */
-    --color-fondo-nav-login: var(--color-principal);
-    --color-texto-nav-login: var(--color-secundario);
-    --fuente-nav-login: var(--fuente-principal);
-
-    /* FORMULARIO LOGIN */
-    --fuente-login: var(--fuente-principal);
-    --color-titulo-login: var(--color-principal);
+    --color-error: #e74c3c;
 }
