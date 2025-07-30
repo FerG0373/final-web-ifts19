@@ -193,5 +193,73 @@ footer {
 
 
 
+/* ########################################################################## */
+/* - - - - - - - - - - - - - - - - NAV - - - - - - - - - - - - - - - - - - -  */
+/* ########################################################################## */
 
+.main-nav {
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-list {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: var(--texto-claro);
+    text-decoration: none;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.nav-link:hover {
+    background: var(--hover-efecto);
+    transform: translateY(-2px);
+}
+
+/* Efecto activo/animation */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: var(--color-terciario);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 70%;
+}
+
+/* ===== ANIMACIÓN EXTRA ===== */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.nav-link:hover {
+    animation: float 1.5s ease-in-out infinite;
+}
 

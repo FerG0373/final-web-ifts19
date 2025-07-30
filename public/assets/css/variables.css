@@ -4,10 +4,29 @@
     /* Fuentes Globales */
     --fuente-principal: "PT Sans", sans-serif;
 
-    /* Colores Globales */
+    /* Colores Login */
     --color-principal-login: #2c3e50;
     --color-secundario-login: #ffffff;
     --color-terciario-login: #3498db;
+
+    /* Colores Globales */
+    --color-primario: #4361ee;
+    --color-secundario: #3f37c9;
+    --color-terciario: #4cc9f0;
+    --texto-claro: #f8f9fa;
+    --texto-oscuro: #212529;
+    --hover-efecto: rgba(255, 255, 255, 0.2);
+
+
+
+    --primary: #4361ee;  /* Azul vibrante */
+    --secondary: #3f37c9; /* Azul oscuro */
+    --accent: #4cc9f0;   /* Celeste brillante */
+    --text-light: #f8f9fa;
+    --text-dark: #212529;
+    --hover-effect: rgba(255, 255, 255, 0.2);
+
+
 
     --color-error: #e74c3c;
 }
