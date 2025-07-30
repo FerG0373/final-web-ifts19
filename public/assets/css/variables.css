@@ -1,10 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 :root {
-    /* NAV LOGIN */
-    --color-fondo-nav-login: #2c3e50;
-    --color-texto-nav-login: #ffffff;
-    --fuente-nav-login: "PT Sans", sans-serif
+    /* Fuentes Globales */
+    --fuente-principal: "PT Sans", sans-serif;
 
-    
+    /* Colores Globales */
+    --color-principal: #2c3e50;
+    --color-secundario: #ffffff;
+
+    /* NAV LOGIN */
+    --color-fondo-nav-login: var(--color-principal);
+    --color-texto-nav-login: var(--color-secundario);
+    --fuente-nav-login: var(--fuente-principal);
+
+    /* FORMULARIO LOGIN */
+    --fuente-login: var(--fuente-principal);
+    --color-titulo-login: var(--color-principal);
 }
