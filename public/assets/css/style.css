@@ -89,7 +89,7 @@ footer {
   padding: 2.5rem;
   background: var(--color-secundario-login);
   border-radius: 12px;
-  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.25);   /* Primer valor: desplazamiento en eje-x; Segundo valor: eje-y; Tercer valor: indica qué tan difuminada es la sombra; Cuarto valor: color y opacidad de la sombra */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);   /* Primer valor: desplazamiento en eje-x; Segundo valor: eje-y; Tercer valor: indica qué tan difuminada es la sombra; Cuarto valor: color y opacidad de la sombra */
   font-family: var(--fuente-principal);
 }
 
@@ -359,7 +359,7 @@ footer {
 .table-container {
   background: white;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   padding: 15px;
   margin-bottom: 25px;
 }
@@ -413,19 +413,19 @@ footer {
 
 .accion-btn {
   font-size: 1.1rem;
-  padding: 5px;  
+  padding: 5px;
   transition: transform 0.3s ease;
 }
 .accion-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.25);
 }
-
 
 /* Botón agregar */
 .btn-agregar {
   display: flex;
   justify-content: center;
   margin: 20px;
+  padding-top: 14px;
 }
 
 .btn-primario {
@@ -439,7 +439,6 @@ footer {
   font-weight: 500;
   transition: background-color 0.3s;
 }
-
 .btn-primario:hover {
   background-color: #3182ce;
 }
@@ -451,20 +450,94 @@ footer {
 
 /* Contenedor principal */
 .form-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 5rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 /* Título del formulario */
 .form-title {
-    color: #2c3e50;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #f0f0f0;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* Grupo de elementos */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+/* Etiquetas */
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #4a5568;
+}
+
+/* Campos de entrada */
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border:2px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-input:focus {
+  border-color: #4299e1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+/* Placeholder */
+.form-input::placeholder {
+  color: #a0aec0;
+}
+
+/* Acciones del formulario */
+.btn-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Botones */
+.btn-accion {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;   /* Transición suave para todas las propiedades */
+}
+
+
+.btn-insertar {
+  background-color: #4299e1;
+  color: white;
+  border: none;
+}
+.btn-insertar:hover {
+  background-color: #3182ce;
+  transform: translateY(-2px);
+}
+
+
+.btn-cancelar {
+  background-color: #e2e8f0;
+  color: #4a5568;
+}
+.btn-cancelar:hover {
+  background-color: #cbd5e0;
 }
