@@ -367,29 +367,75 @@ footer {
   font-size: 0.95rem;
 }
 
-
+/* Selecciona todos los th hijos de la clase abm-table */
 .abm-table th {
-    background-color: #f5f7fa;
-    color: #4a5568;
-    padding: 12px 15px;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid #e2e8f0;
+  background-color: #f5f7fa;
+  color: #4a5568;
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 600;
+  border-bottom: 2px solid #e2e8f0;
 }
 
 
 .abm-table td {
-    padding: 12px 15px;
-    border-bottom: 1px solid #edf2f7;
-    vertical-align: middle;
+  padding: 12px 15px;
+  border-bottom: 1px solid #edf2f7;
+  vertical-align: middle;
 }
 
-
+/* Selecciona a todos los td descendientes de tr, ese tr está dentro de un elemento con la clase abm-table*/
 .abm-table tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 
 .abm-table tr:hover td {
-    background-color: #f8fafc;
+  background-color: #f8fafc;
+}
+
+/* Acción Editar y Borrar */
+.acciones {
+  text-align: center;
+}
+
+
+.acciones-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.accion-btn {
+  font-size: 1.1rem;
+  padding: 5px;  
+  transition: transform 0.3s ease;
+}
+.accion-btn:hover {
+  transform: scale(1.1);
+}
+
+
+/* Botón agregar */
+.btn-agregar {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.btn-primario {
+  display: inline-flex;
+  margin: 0 auto;
+  gap: 15px;
+  padding: 10px 20px;
+  background-color: #4299e1;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.btn-primario:hover {
+  background-color: #3182ce;
 }

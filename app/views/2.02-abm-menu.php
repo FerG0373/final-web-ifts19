@@ -36,7 +36,7 @@ $titulosMenuABM = obtieneTitulosMenu($conexion);
                         <th width="15%">ID</th>
                         <th width="35%">Descripción</th>
                         <th width="35%">Ruta de Destino</th>
-                        <th width="15%">Acciones</th>
+                        <th width="15%">Editar/Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,11 +48,11 @@ $titulosMenuABM = obtieneTitulosMenu($conexion);
                             <td class="acciones">
                                 <?php if ($titulo['id'] > 5): ?>
                                     <div class="acciones-container">
-                                        <a href="index.php?page=/form_menu&action=edit&id=<?= htmlspecialchars($titulo['id']) ?>" title="Editar">✏️</a>
+                                        <a href="index.php?page=/form_menu&action=edit&id=<?= htmlspecialchars($titulo['id']) ?>" title="Editar" class="accion-btn editar">✏️</a>
                                         <form action="index.php?page=/abm_menu" method="POST">
                                             <input type="hidden" name="action" value="delete">
                                             <input type="hidden" name="id" value="<?= ($titulo['id']) ?>">
-                                            <button type="submit" onclick="return confirm('¿Está seguro que desea eliminar este título?');" title="Eliminar">🗑️</button>
+                                            <button type="submit" onclick="return confirm('¿Está seguro que desea eliminar este título?');" title="Eliminar" class="accion-btn">🗑️</button>
                                         </form>
                                     </div>
                                 <?php else: ?>
@@ -66,8 +66,8 @@ $titulosMenuABM = obtieneTitulosMenu($conexion);
         </div>
     <?php endif; ?>
     
-    <div>
-        <a href="index.php?page=/form_menu">
+    <div class="btn-agregar">
+        <a href="index.php?page=/form_menu" class="btn-primario">
             ➕ Agregar Nuevo Título
         </a>
     </div>
