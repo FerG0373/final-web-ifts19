@@ -11,7 +11,7 @@ if (session_status() == PHP_SESSION_NONE) {
 ######################################################################## */
 
 .footer-content {
-    background-color: <?php echo isset($_SESSION['logueado']) ? '#4cc9f0' : 'var(--color-principal-login)'; ?>;
+    background: <?php echo isset($_SESSION['logueado']) ? 'linear-gradient(135deg, var(--color-primario), var(--color-secundario))' : 'var(--color-principal-login)'; ?>;
     color: var(--color-secundario-login);
     padding: 1.5rem 2rem;
     font-family: var(--fuente-principal-login);

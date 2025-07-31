@@ -5,20 +5,7 @@ require_once __DIR__ . '/../../config/dbQueries.php';
 $menuTitulos = obtieneTitulosMenu($conexion);
 ?>
 
-<nav>
-    <ul>
-        <?php foreach ($menuTitulos as $titulo): ?>
-            <li>
-                <a href="index.php?page=<?php echo htmlspecialchars($titulo['ruta_destino']); ?>">
-                    <?php echo htmlspecialchars($titulo['descripcion']); ?>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
-</nav>
-
-
-<nav class="main-nav">
+<nav class="nav">
     <ul class="nav-list">
         <?php foreach ($menuTitulos as $titulo): ?>
             <li class="nav-item">
