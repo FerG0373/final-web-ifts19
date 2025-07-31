@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>NOT FOUND - 404</h2>
+    <img src="../public/assets/img/404.jpg" alt="Imagen con error 404.">
 </body>
 </html>

@@ -334,6 +334,10 @@ footer {
   margin-bottom: 20px;
   border-radius: 4px;
   font-weight: 500;
+  animation: fadeOut 1s ease-out 4s forwards;
+}
+@keyframes fadeOut {
+  to { opacity: 0; display: none; }
 }
 .success {
   background-color: #e6ffed;
@@ -438,4 +442,29 @@ footer {
 
 .btn-primario:hover {
   background-color: #3182ce;
+}
+
+
+/* ########################################################################## */
+/* - - - - - - - - - - - - - FORMULARIO ABM  - - - - - - - - - - - - - - - -  */
+/* ########################################################################## */
+
+/* Contenedor principal */
+.form-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del formulario */
+.form-title {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
 }
