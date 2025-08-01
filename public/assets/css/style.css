@@ -186,11 +186,6 @@ footer {
 }
 /* Los @keyframes son una regla de CSS que permite crear animaciones personalizadas definiendo cómo un elemento debe cambiar sus estilos a lo largo de una secuencia de tiempo. Se usan junto con la propiedad animation, como por ejemplo, fadeOut */
 
-/* Colores personalizados */
-.mensaje.exito { color: green; }
-.mensaje.alerta { color: orange; }
-.mensaje.error { color: red; }
-
 
 /* ########################################################################## */
 /* - - - - - - - - - - - - - - - - NAV - - - - - - - - - - - - - - - - - - -  */
@@ -483,17 +478,10 @@ footer {
 
 /* Campos de entrada */
 .form-input {
-  width: 100%;
   padding: 0.75rem;
-  border:2px solid #e2e8f0;
   border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s;
-}
-.form-input:focus {
-  border-color: #4299e1;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 }
 
 /* Placeholder */
@@ -511,14 +499,9 @@ footer {
 
 /* Botones */
 .btn-accion {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 0.75rem 1.5rem;
   border-radius: 6px;
   font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
   transition: all 0.3s ease;   /* Transición suave para todas las propiedades */
 }
 
