@@ -1,13 +1,18 @@
 <section class="giphy-section">
-    <h2>Buscador de GIFs con Giphy</h2>    
-    <img src="" alt="Logo Gif.os">
+    <h2 class="giphy-title">Buscador de GIFs con Giphy</h2>
 
     <!-- Buscador -->
     <div id="container-busqueda" class="search-container">
-        <label for="input-busqueda-giphy" class="search-label">Buscar</label>
-        <input type="text" id="input-busqueda-giphy" class="search-input" placeholder="Buscá los GIFs que quieras...">
-        <label for="input-limite-giphy" class="limit-label">Límite</label>
-        <input type="number" id="input-limite-giphy" class="limit-input" min="1" max="40" placeholder="Cantidad de GIFs a buscar (máx. 40)">
+        <div class="input-container">
+            <div class="input-group">
+                <label for="input-busqueda-giphy" class="search-label">Buscar:</label>
+                <input type="text" id="input-busqueda-giphy" class="search-input" placeholder="Buscá los GIFs que quieras...">
+            </div>
+            <div class="input-group">
+                <label for="input-limite-giphy" class="limit-label">Límite:</label>
+                <input type="number" id="input-limite-giphy" class="limit-input" min="1" max="40" placeholder="Cantidad (máx. 40)">
+            </div>
+        </div>
 
         <button id="button-busqueda-giphy" class="search-button">
             <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
