@@ -17,5 +17,24 @@
     --texto-oscuro: #212529;
     --hover-efecto: rgba(255, 255, 255, 0.2);
 
-    
+    /* Tema oscuro */
+    /* Navbars (Tema claro) */
+    --nav-1-login: var(--color-principal-login);
+    --nav-2-app: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+}
+
+.dark-theme {
+    /* Colores base oscuros */
+    --color-fondo: #121212;
+    --color-texto: #f8f9fa;
+    --hover-efecto: rgba(255, 255, 255, 0.1);
+
+    /* Navbars (Tema oscuro) */
+    --nav-1-login: #000000; /* Negro sólido */
+    --nav-2-app: #000000; /* Negro sólido */
+
+    /* Ajustes específicos para otros elementos en oscuro */
+    --color-primario: #3a0ca3;
+    --color-secundario: #480ca8;
+    --color-terciario: #4895ef;
 }

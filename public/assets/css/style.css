@@ -138,8 +138,8 @@ footer {
 /* Alternar contraseña */
 .password-toggle {
   position: absolute;
-  right: 12px;
-  top: 45px;
+  right: 15px;
+  top: 42px;
   cursor: pointer;
   color: #7f8c8d;
   transition: color 0.2s;
@@ -191,17 +191,29 @@ footer {
 /* - - - - - - - - - - - - - - - - NAV - - - - - - - - - - - - - - - - - - -  */
 /* ########################################################################## */
 
+/* Principal */
 .nav {
   background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
-  padding: 2rem 2rem;
+  padding: 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+/* Contenedor de elementos */
+.nav-container {
+  display: flex;
+  margin-right: 5rem;
+}
+
+.nav-container button {
+  margin-left: auto;
+}
+
 /* Contenedor de los enlaces */
 .nav-list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: left;
   gap: 2rem;
   list-style: none;
@@ -524,3 +536,4 @@ footer {
 .btn-cancelar:hover {
   background-color: #cbd5e0;
 }
+

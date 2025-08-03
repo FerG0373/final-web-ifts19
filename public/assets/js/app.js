@@ -34,8 +34,29 @@ function alternarVisibilidad() {
 }
 
 
+function alternarIconoTema() {
+    const moonIcon = document.getElementById('moon-icon');
+    const sunIcon = document.getElementById('sun-icon');
+
+    const lunaVisible = moonIcon.style.display !== 'none';
+
+    if (lunaVisible) {
+        moonIcon.style.display = 'none';
+        sunIcon.style.display = 'inline';
+    } else {
+        moonIcon.style.display = 'inline';
+        sunIcon.style.display = 'none';
+    }
+}
+
+
 // Ejecutar cuando el DOM esté listo.
 document.addEventListener('DOMContentLoaded', muestraFechaNav);
+
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    themeToggle.addEventListener('click', alternarIconoTema);
+});
 
 
 // --- Explicación: ---
