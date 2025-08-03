@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-07-2025 a las 13:43:22
+-- Tiempo de generación: 03-08-2025 a las 03:22:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -73,7 +73,8 @@ INSERT INTO `usuario` (`id`, `nombre`, `pass`) VALUES
 --
 ALTER TABLE `menu`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `UQ_menu_descripcion` (`descripcion`);
+  ADD UNIQUE KEY `UQ_menu_descripcion` (`descripcion`),
+  ADD UNIQUE KEY `UQ_menu_ruta_destino` (`ruta_destino`);
 
 --
 -- Indices de la tabla `usuario`
