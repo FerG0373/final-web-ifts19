@@ -35,8 +35,8 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
     <!-- 2. Estilos propios -->
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/variables.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dynamic-styles.php">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/giphy.css">
 </head>
 <body>

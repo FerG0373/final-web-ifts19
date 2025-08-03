@@ -37,15 +37,18 @@ function alternarVisibilidad() {
 function alternarIconoTema() {
     const moonIcon = document.getElementById('moon-icon');
     const sunIcon = document.getElementById('sun-icon');
+    const body = document.body;
 
     const lunaVisible = moonIcon.style.display !== 'none';
 
     if (lunaVisible) {
         moonIcon.style.display = 'none';
         sunIcon.style.display = 'inline';
+        body.classList.add('dark-mode');  // ACTIVAR tema oscuro
     } else {
         moonIcon.style.display = 'inline';
         sunIcon.style.display = 'none';
+        body.classList.remove('dark-mode');  // DESACTIVAR tema oscuro
     }
 }
 
