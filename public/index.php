@@ -39,6 +39,8 @@ if ($vista_solicitada === '/login' && isset($_SESSION['logueado']) && $_SESSION[
     <link rel="stylesheet" href="assets/css/giphy.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- 3. favicon -->
+    <link rel="icon" href="assets/img/ifts19_logo.png" type="image/x-icon">
 </head>
 <body>
     <header>

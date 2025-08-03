@@ -1,4 +1,4 @@
-// 1. Funciones exclusiva para /login:
+// 1. FUNCIONES EXCLUSIVAS PARA EL LOGIN.
 function muestraFechaNav() {
   const fecha = document.getElementById('fecha-actual');
   
@@ -14,13 +14,13 @@ function muestraFechaNav() {
   
   const fechaFormateada = formato.format(new Date())
   .replace(/ /g, '-')  // Reemplaza todos (g) los espacios (/ /) por guiones.
-  .replace(/\b\w/g, letra => letra.toUpperCase()); // Mayúscula inicial en mes
+  .replace(/\b\w/g, letra => letra.toUpperCase()); // Mayúscula inicial en mes.
   
   fecha.textContent = fechaFormateada;
 }
 
 
-function alternarVisibilidad() {
+function alternaVisibilidadPass() {
     const campoPassword = document.getElementById('pass');
     const iconoAlternable = document.querySelector('.material-symbols-outlined');
 
@@ -33,33 +33,47 @@ function alternarVisibilidad() {
     }
 }
 
+// 2. FUNCIONES PARA EL CAMBIO DE TEMA.
+function alternaIconoTema() {
+    const iconoLuna = document.getElementById('moon-icon');
+    const iconoSol = document.getElementById('sun-icon');
+    const modoOscuro = document.body.classList.contains('dark-mode');   /* Comprueba si el body tiene la clase 'dark-mode'. Retorna true o false. */
 
-function alternarIconoTema() {
-    const moonIcon = document.getElementById('moon-icon');
-    const sunIcon = document.getElementById('sun-icon');
-    const body = document.body;
-
-    const lunaVisible = moonIcon.style.display !== 'none';
-
-    if (lunaVisible) {
-        moonIcon.style.display = 'none';
-        sunIcon.style.display = 'inline';
-        body.classList.add('dark-mode');  // ACTIVAR tema oscuro
-    } else {
-        moonIcon.style.display = 'inline';
-        sunIcon.style.display = 'none';
-        body.classList.remove('dark-mode');  // DESACTIVAR tema oscuro
-    }
+    iconoLuna.style.display = modoOscuro ? 'none' : 'inline';   /* Si está en modo oscuro, oculta el ícono de la luna; si no, lo muestra. */
+    iconoSol.style.display = modoOscuro ? 'inline' : 'none';
 }
 
 
-// Ejecutar cuando el DOM esté listo.
-document.addEventListener('DOMContentLoaded', muestraFechaNav);
+function alternaTema() {
+    const body = document.body;   /* Obtiene el elemento body del documento. */
+    body.classList.toggle('dark-mode');   /* Alterna la clase 'dark-mode' en el body. Si ya está, la quita; si no, la añade. */
+    
+    // Guardar preferencia en localStorage.
+    const modoOscuro = body.classList.contains('dark-mode');
+    localStorage.setItem('darkMode', modoOscuro);   /* Clave: 'darkMode', Valor: true/false según el modo oscuro. */
+    
+    // Actualizar íconos.
+    alternaIconoTema();
+}
 
+
+function cargaTemaGuardado() {
+    const modoOscuro = localStorage.getItem('darkMode') === 'true';   /* Recupera el valor guardado en localStorage. Si es 'true', se considera que el modo oscuro está activado. LocalStorage siempre guarda valores como strings y por eso se compara con 'true'. */
+    if (modoOscuro) {
+        document.body.classList.add('dark-mode');
+    }
+    alternaIconoTema();
+}
+
+
+// EJECUTAR CUANDO EL DOM ESTÁ LISTO.
 document.addEventListener('DOMContentLoaded', () => {
+    muestraFechaNav();
+    cargaTemaGuardado();
+
     const themeToggle = document.getElementById('theme-toggle');
-    themeToggle.addEventListener('click', alternarIconoTema);
-});
+    themeToggle.addEventListener('click', alternaTema);
+})
 
 
 // --- Explicación: ---

@@ -8,7 +8,7 @@
         <div class="form-group password-container">
             <label class="form-label" for="pass">Contraseña:</label>
             <input class="form-input password-input" type="password" id="pass" name="pass" placeholder="Contraseña" required>
-            <span class="material-symbols-outlined password-toggle" onclick="alternarVisibilidad()">visibility_off</span>
+            <span class="material-symbols-outlined password-toggle" onclick="alternaVisibilidadPass()">visibility_off</span>
         </div>        
         <?php
             // Muestra mensaje de error según corresponda.

@@ -10,7 +10,7 @@ body.dark-mode .footer-content {
 }
 
 
-body, .nav-login, .submit-btn {
+main, .nav-login, .submit-btn {
   transition: background-color 2s ease, color 0.5s ease;
 }
 
@@ -42,7 +42,7 @@ body.dark-mode .results-title {
 
 
 body.dark-mode main {
-  background: #333333
+  background-color: #333333;
 }
 
 
