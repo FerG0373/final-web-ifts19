@@ -1,0 +1,58 @@
+/* ########################################################################## */
+/* - - - - - - - - - - - - - MODO OSCURO - - - - - - - - - - - - - - - - - -  */
+/* ########################################################################## */
+
+/* Modo oscuro del login */
+body.dark-mode .nav-login,
+body.dark-mode .submit-btn,
+body.dark-mode .footer-content {
+  background-color: #000000;
+}
+
+
+body, .nav-login, .submit-btn {
+  transition: background-color 2s ease, color 0.5s ease;
+}
+
+/* Modo oscuro de la app */
+body.dark-mode .nav,
+body.dark-mode .footer-content {
+  background: linear-gradient(135deg, #333333, #000000);
+}
+
+
+body.dark-mode .section-home {
+  background: linear-gradient(135deg, #000000, #333333);
+}
+
+
+body.dark-mode .btn-primario,
+body.dark-mode .btn-accion,
+body.dark-mode .search-button {
+  background-color: #000000;
+}
+
+
+body.dark-mode .search-label,
+body.dark-mode .limit-label,
+body.dark-mode .giphy-title,
+body.dark-mode .results-title {
+  color: #000000;
+}
+
+
+body.dark-mode main {
+  background: #333333
+}
+
+
+body.dark-mode .abm-title,
+body.dark-mode .giphy-title,
+body.dark-mode .results-title {
+  color: #ffffff;
+}
+
+
+body.dark-mode .btn-primario {
+  border: 1px solid #ffffff;
+}

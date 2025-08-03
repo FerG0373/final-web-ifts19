@@ -19,4 +19,7 @@
 
     /* Colores mensajes */
     --color-error: red;
+
+    /* Colores Giphy */
+    --color-giphy-principal: #4a00e0;
 }

@@ -4,6 +4,10 @@ body {
   min-height: 100vh;   /* Necesario para sticky footer (footer abajo de todo) */
 }
 
+main {
+  flex-grow: 1;   /* El main ocupará el espacio sobrante. Necesario para sticky footer (footer abajo de todo) */
+}
+
 footer {
   margin-top: auto;   /* Necesario para sticky footer (footer abajo de todo) */
 }
@@ -535,42 +539,4 @@ footer {
 }
 .btn-cancelar:hover {
   background-color: #cbd5e0;
-}
-
-
-/* ########################################################################## */
-/* - - - - - - - - - - - - - MODO OSCURO - - - - - - - - - - - - - - - - - -  */
-/* ########################################################################## */
-
-/* Modo oscuro del login */
-body.dark-mode .nav-login,
-body.dark-mode .submit-btn,
-body.dark-mode .footer-content {
-  background-color: #000000;
-}
-
-
-body, .nav-login, .submit-btn {
-  transition: background-color 2s ease, color 0.5s ease;
-}
-
-/* Modo oscuro de la app */
-body.dark-mode .nav,
-body.dark-mode .footer-content {
-  background: linear-gradient(135deg, #333333, #000000);
-}
-
-body.dark-mode .section-home {
-  background: linear-gradient(135deg, #000000, #333333);
-}
-
-body.dark-mode .btn-primario,
-body.dark-mode .btn-accion,
-body.dark-mode .search-button {
-  background-color: #000000;
-}
-
-body.dark-mode .search-label,
-body.dark-mode .limit-label {
-  color: #000000;
 }
